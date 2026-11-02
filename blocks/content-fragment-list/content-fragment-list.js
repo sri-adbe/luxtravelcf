@@ -27,11 +27,11 @@ function link(href, className) {
   return a;
 }
 
-function picture(image, alt, width) {
+function picture(image, alt, width, { prop = 'image', label = 'Image', className = 'content-fragment-list-image' } = {}) {
   const src = getImageUrl(image, width);
   if (!src) return null;
-  const pic = el('picture', { className: 'content-fragment-list-image' });
-  const img = el('img', { prop: 'image', type: 'media', label: 'Image' });
+  const pic = el('picture', { className });
+  const img = el('img', { prop, type: 'media', label });
   img.src = src;
   img.alt = alt || '';
   img.loading = 'lazy';
@@ -125,6 +125,50 @@ const renderers = {
       if (cf.location) cite.append(', ', location);
       quote.append(text, cite);
       return quote;
+    },
+  },
+  experiences: {
+    query: 'experienceByPath',
+    label: 'Experience',
+    render: (cf) => {
+      const card = el('article', { className: 'content-fragment-list-card' });
+      const head = el('div', { className: 'content-fragment-list-head' });
+      head.append(el('h3', { text: cf.title, prop: 'title', label: 'Title' }));
+      const icon = picture(cf.icon, '', 48, { prop: 'icon', label: 'Icon', className: 'content-fragment-list-icon' });
+      if (icon) head.append(icon);
+      card.append(head, el('p', {
+        className: 'content-fragment-list-text', text: cf.description?.plaintext, prop: 'description', label: 'Description',
+      }));
+      return card;
+    },
+  },
+  stays: {
+    query: 'stayByPath',
+    label: 'Stay',
+    render: (cf) => {
+      const card = el('article', { className: 'content-fragment-list-card' });
+      card.append(...[
+        picture(cf.image, cf.name, 1200),
+        el('h3', { text: cf.name, prop: 'name', label: 'Name' }),
+        el('p', {
+          className: 'content-fragment-list-text', text: cf.description?.plaintext, prop: 'description', label: 'Description',
+        }),
+      ].filter(Boolean));
+      return card;
+    },
+  },
+  features: {
+    query: 'featureByPath',
+    label: 'Feature',
+    render: (cf) => {
+      const card = el('div', { className: 'content-fragment-list-card' });
+      card.append(
+        el('h3', { text: cf.title, prop: 'title', label: 'Title' }),
+        el('p', {
+          className: 'content-fragment-list-text', text: cf.description?.plaintext, prop: 'description', label: 'Description',
+        }),
+      );
+      return card;
     },
   },
 };

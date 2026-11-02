@@ -49,6 +49,9 @@ async function getLocalFragment(path) {
       item[name] = asset
         ? { _path: asset.path, _publishUrl: asset.source, _authorUrl: asset.source }
         : null;
+    } else if (/link$/i.test(name) && /^\/(?!content\/)\w/.test(value || '')) {
+      // the local preview serves pages under /content, so page links get that prefix
+      item[name] = `/content${value}`;
     } else {
       item[name] = value ?? null;
     }

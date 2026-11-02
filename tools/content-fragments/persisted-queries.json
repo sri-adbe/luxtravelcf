@@ -4,6 +4,9 @@
     "curatorByPath": "query curatorByPath($path: String!, $variation: String = \"master\") { curatorByPath(_path: $path, variation: $variation) { item { _path name region bio { plaintext } image { ... on ImageRef { _path _authorUrl _publishUrl _dynamicUrl width height } } ctaLabel ctaLink } } }",
     "destinationByPath": "query destinationByPath($path: String!, $variation: String = \"master\") { destinationByPath(_path: $path, variation: $variation) { item { _path name country tagline image { ... on ImageRef { _path _authorUrl _publishUrl _dynamicUrl width height } } link } } }",
     "serviceByPath": "query serviceByPath($path: String!, $variation: String = \"master\") { serviceByPath(_path: $path, variation: $variation) { item { _path number title description { plaintext } link } } }",
-    "testimonialByPath": "query testimonialByPath($path: String!, $variation: String = \"master\") { testimonialByPath(_path: $path, variation: $variation) { item { _path quote { plaintext } author location featured } } }"
+    "testimonialByPath": "query testimonialByPath($path: String!, $variation: String = \"master\") { testimonialByPath(_path: $path, variation: $variation) { item { _path quote { plaintext } author location featured } } }",
+    "experienceByPath": "query experienceByPath($path: String!, $variation: String = \"master\") { experienceByPath(_path: $path, variation: $variation) { item { _path title icon { ... on ImageRef { _path _authorUrl _publishUrl _dynamicUrl width height } } description { plaintext } } } }",
+    "stayByPath": "query stayByPath($path: String!, $variation: String = \"master\") { stayByPath(_path: $path, variation: $variation) { item { _path name image { ... on ImageRef { _path _authorUrl _publishUrl _dynamicUrl width height } } description { plaintext } } } }",
+    "featureByPath": "query featureByPath($path: String!, $variation: String = \"master\") { featureByPath(_path: $path, variation: $variation) { item { _path title description { plaintext } } } }"
   }
 }

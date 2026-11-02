@@ -60,6 +60,18 @@
             {
               "name": "Testimonials",
               "value": "testimonials"
+            },
+            {
+              "name": "Experiences",
+              "value": "experiences"
+            },
+            {
+              "name": "Stays",
+              "value": "stays"
+            },
+            {
+              "name": "Features",
+              "value": "features"
             }
           ]
         }

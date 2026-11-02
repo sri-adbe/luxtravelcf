@@ -6,19 +6,50 @@
       "technicalName": "curator",
       "description": "A Lux Traveler travel curator, shown in the curators list.",
       "fields": [
-        { "type": "text", "name": "name", "label": "Name", "required": true, "maxLength": 255 },
-        { "type": "text", "name": "region", "label": "Region", "description": "City and region, e.g. Paris · Europe", "maxLength": 255 },
-        { "type": "long-text", "name": "bio", "label": "Short Bio", "mimeType": "text/plain" },
+        {
+          "type": "text",
+          "name": "name",
+          "label": "Name",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "text",
+          "name": "region",
+          "label": "Region",
+          "description": "City and region, e.g. Paris · Europe",
+          "maxLength": 255
+        },
+        {
+          "type": "long-text",
+          "name": "bio",
+          "label": "Short Bio",
+          "mimeType": "text/plain"
+        },
         {
           "type": "content-reference",
           "name": "image",
           "label": "Portrait",
           "root": "/content/dam/luxtravelcf/images",
           "showThumbnail": true,
-          "allowedContentTypes": ["image"]
+          "allowedContentTypes": [
+            "image"
+          ]
         },
-        { "type": "text", "name": "ctaLabel", "label": "Button Label", "description": "e.g. Meet Jim →", "maxLength": 255 },
-        { "type": "text", "name": "ctaLink", "label": "Button Link", "description": "Page path or URL; #enquiry opens the contact dialog. Leave empty for no link.", "maxLength": 255 }
+        {
+          "type": "text",
+          "name": "ctaLabel",
+          "label": "Button Label",
+          "description": "e.g. Meet Jim →",
+          "maxLength": 255
+        },
+        {
+          "type": "text",
+          "name": "ctaLink",
+          "label": "Button Link",
+          "description": "Page path or URL; #enquiry opens the contact dialog. Leave empty for no link.",
+          "maxLength": 255
+        }
       ]
     },
     {
@@ -26,18 +57,42 @@
       "technicalName": "destination",
       "description": "A handpicked destination, shown in the destinations list.",
       "fields": [
-        { "type": "text", "name": "name", "label": "Name", "required": true, "maxLength": 255 },
-        { "type": "text", "name": "country", "label": "Country", "maxLength": 255 },
-        { "type": "text", "name": "tagline", "label": "Tagline", "maxLength": 255 },
+        {
+          "type": "text",
+          "name": "name",
+          "label": "Name",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "text",
+          "name": "country",
+          "label": "Country",
+          "maxLength": 255
+        },
+        {
+          "type": "text",
+          "name": "tagline",
+          "label": "Tagline",
+          "maxLength": 255
+        },
         {
           "type": "content-reference",
           "name": "image",
           "label": "Image",
           "root": "/content/dam/luxtravelcf/images",
           "showThumbnail": true,
-          "allowedContentTypes": ["image"]
+          "allowedContentTypes": [
+            "image"
+          ]
         },
-        { "type": "text", "name": "link", "label": "Link", "description": "Destination page path or URL. Leave empty for no link.", "maxLength": 255 }
+        {
+          "type": "text",
+          "name": "link",
+          "label": "Link",
+          "description": "Destination page path or URL. Leave empty for no link.",
+          "maxLength": 255
+        }
       ]
     },
     {
@@ -45,10 +100,33 @@
       "technicalName": "service",
       "description": "A Lux Traveler service offering, shown in the services list.",
       "fields": [
-        { "type": "text", "name": "number", "label": "Number", "description": "Display number, e.g. 01", "maxLength": 10 },
-        { "type": "text", "name": "title", "label": "Title", "required": true, "maxLength": 255 },
-        { "type": "long-text", "name": "description", "label": "Description", "mimeType": "text/plain" },
-        { "type": "text", "name": "link", "label": "Link", "description": "Page path, anchor or URL", "maxLength": 255 }
+        {
+          "type": "text",
+          "name": "number",
+          "label": "Number",
+          "description": "Display number, e.g. 01",
+          "maxLength": 10
+        },
+        {
+          "type": "text",
+          "name": "title",
+          "label": "Title",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "long-text",
+          "name": "description",
+          "label": "Description",
+          "mimeType": "text/plain"
+        },
+        {
+          "type": "text",
+          "name": "link",
+          "label": "Link",
+          "description": "Page path, anchor or URL",
+          "maxLength": 255
+        }
       ]
     },
     {
@@ -56,10 +134,112 @@
       "technicalName": "testimonial",
       "description": "A client testimonial, shown in the testimonials list.",
       "fields": [
-        { "type": "long-text", "name": "quote", "label": "Quote", "required": true, "mimeType": "text/plain" },
-        { "type": "text", "name": "author", "label": "Author", "maxLength": 255 },
-        { "type": "text", "name": "location", "label": "Location", "maxLength": 255 },
-        { "type": "boolean", "name": "featured", "label": "Featured", "description": "Highlight this testimonial", "defaultValue": false }
+        {
+          "type": "long-text",
+          "name": "quote",
+          "label": "Quote",
+          "required": true,
+          "mimeType": "text/plain"
+        },
+        {
+          "type": "text",
+          "name": "author",
+          "label": "Author",
+          "maxLength": 255
+        },
+        {
+          "type": "text",
+          "name": "location",
+          "label": "Location",
+          "maxLength": 255
+        },
+        {
+          "type": "boolean",
+          "name": "featured",
+          "label": "Featured",
+          "description": "Highlight this testimonial",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "name": "Experience",
+      "technicalName": "experience",
+      "description": "A bespoke experience at a destination, shown as an icon card.",
+      "fields": [
+        {
+          "type": "text",
+          "name": "title",
+          "label": "Title",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "content-reference",
+          "name": "icon",
+          "label": "Icon",
+          "root": "/content/dam/luxtravelcf/images",
+          "showThumbnail": true,
+          "allowedContentTypes": [
+            "image"
+          ]
+        },
+        {
+          "type": "long-text",
+          "name": "description",
+          "label": "Description",
+          "mimeType": "text/plain"
+        }
+      ]
+    },
+    {
+      "name": "Stay",
+      "technicalName": "stay",
+      "description": "A handpicked place to stay at a destination, shown as an image card.",
+      "fields": [
+        {
+          "type": "text",
+          "name": "name",
+          "label": "Name",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "content-reference",
+          "name": "image",
+          "label": "Image",
+          "root": "/content/dam/luxtravelcf/images",
+          "showThumbnail": true,
+          "allowedContentTypes": [
+            "image"
+          ]
+        },
+        {
+          "type": "long-text",
+          "name": "description",
+          "label": "Description",
+          "mimeType": "text/plain"
+        }
+      ]
+    },
+    {
+      "name": "Feature",
+      "technicalName": "feature",
+      "description": "A service feature (title and text), shown side by side in a highlighted band.",
+      "fields": [
+        {
+          "type": "text",
+          "name": "title",
+          "label": "Title",
+          "required": true,
+          "maxLength": 255
+        },
+        {
+          "type": "long-text",
+          "name": "description",
+          "label": "Description",
+          "mimeType": "text/plain"
+        }
       ]
     }
   ]

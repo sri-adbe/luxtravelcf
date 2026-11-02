@@ -36,6 +36,17 @@
   object-fit: cover;
 }
 
+/* variant image sizing (kept here for no-descending-specificity) */
+.content-fragment-list.experiences .content-fragment-list-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.content-fragment-list.stays .content-fragment-list-image img {
+  height: 100%;
+}
+
 .content-fragment-list .content-fragment-list-eyebrow {
   margin: 16px 0 7px;
   color: var(--accent-color);
@@ -218,6 +229,114 @@
   text-transform: uppercase;
 }
 
+/* experiences */
+.content-fragment-list.experiences > ul,
+.content-fragment-list.stays > ul {
+  gap: 32px;
+}
+
+.content-fragment-list.experiences .content-fragment-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  background-color: var(--background-color);
+}
+
+/* decorative divider between header and body */
+.content-fragment-list.experiences .content-fragment-list-card::after {
+  content: '';
+  order: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.content-fragment-list.experiences .content-fragment-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.content-fragment-list.experiences h3 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.5;
+}
+
+.content-fragment-list.experiences .content-fragment-list-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.content-fragment-list.experiences .content-fragment-list-text {
+  order: 2;
+}
+
+.content-fragment-list.experiences .content-fragment-list-text,
+.content-fragment-list.stays .content-fragment-list-text,
+.content-fragment-list.features .content-fragment-list-text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* stays */
+.content-fragment-list.stays .content-fragment-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-fragment-list.stays .content-fragment-list-image {
+  height: 260px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.content-fragment-list.stays h3 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+/* features: one banner, columns separated by a short decorative rule */
+.content-fragment-list.features > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 81px;
+  padding: 40px;
+  border-radius: 24px;
+  background-color: var(--light-color);
+}
+
+.content-fragment-list.features > ul > li {
+  position: relative;
+}
+
+.content-fragment-list.features > ul > li + li::before {
+  content: '';
+  position: absolute;
+  top: -41px;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.content-fragment-list.features .content-fragment-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content-fragment-list.features h3 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
 @media (width > 600px) {
   .content-fragment-list.curators > ul,
   .content-fragment-list.testimonials > ul {
@@ -244,5 +363,31 @@
 
   .content-fragment-list.services > ul {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .content-fragment-list.experiences > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content-fragment-list.stays > ul {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content-fragment-list.stays .content-fragment-list-image {
+    height: 400px;
+  }
+
+  .content-fragment-list.features > ul {
+    flex-direction: row;
+    gap: 160px;
+  }
+
+  .content-fragment-list.features > ul > li {
+    flex: 1 1 0;
+  }
+
+  .content-fragment-list.features > ul > li + li::before {
+    top: calc(50% - 0.5px);
+    left: -120px;
   }
 }

@@ -20,8 +20,11 @@ block references one fragment; the block's *Fragment Type* (`curators`, `destina
 | Destination (`destination`) | name, country, tagline, image (content reference), link |
 | Service (`service`) | number, title, description (multi line), link |
 | Testimonial (`testimonial`) | quote (multi line), author, location, featured (boolean) |
+| Experience (`experience`) | title, icon (content reference), description (multi line) |
+| Stay (`stay`) | name, image (content reference), description (multi line) |
+| Feature (`feature`) | title, description (multi line) |
 
-Fragments live in `/content/dam/luxtravelcf/fragments/{curators,destinations,services,testimonials}`,
+Fragments live in `/content/dam/luxtravelcf/fragments/{curators,destinations,services,testimonials,experiences,stays,features}`,
 images in `/content/dam/luxtravelcf/images`.
 
 ## Option A: content package (recommended)
@@ -37,7 +40,8 @@ images in `/content/dam/luxtravelcf/images`.
 | `/content/dam/luxtravelcf/jcr:content` | `cq:conf` binding to `/conf/luxtravelcf` | update |
 | `/content/dam/luxtravelcf/images` | 9 images (curators, destinations, home page) | update |
 | `/content/dam/luxtravelcf/fragments` | the 14 Content Fragments | update |
-| `/content/luxtravelcf/index` | the home page (Universal Editor) | **replace** |
+| `/content/luxtravelcf/index`, `/nav`, `/footer` | the home page and the header/footer pages | **replace** |
+| `/content/luxtravelcf/destinations/amalfi-coast` | the Amalfi Coast destination page (Template: destination) | **replace** |
 
 Parent nodes (`/conf/luxtravelcf`, `/content/luxtravelcf`, …) are only created when missing.
 
@@ -53,7 +57,7 @@ and you only need the Content Fragment setup.
 3. **Publish** the models, images, fragments, persisted queries, GraphQL endpoint and the page.
 4. **CORS**: see step 5 below.
 
-The page source is `tools/content-package/pages/index.xml`, converted from the imported
+The page sources are in `tools/content-package/pages/` (index, nav, footer, destinations/amalfi-coast), converted from the imported
 `content/index.plain.html` with the Universal Editor component models. Regenerate it if the page
 is re-imported.
 

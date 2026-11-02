@@ -12,12 +12,16 @@
  * Block header: "content-fragment-list (<type>)", type from enclosing section class.
  */
 const FRAGMENT_ROOT = '/content/dam/luxtravelcf/fragments';
-const TYPES = ['curators', 'destinations', 'services', 'testimonials'];
+const TYPES = ['curators', 'destinations', 'services', 'testimonials', 'experiences', 'stays', 'features'];
 const GRID_TYPES = {
   'curator-grid': 'curators',
   'destination-grid': 'destinations',
   'services-grid': 'services',
   quotes: 'testimonials',
+  // destination pages
+  'amalfi-cards-grid': 'experiences',
+  'amalfi-acc-grid': 'stays',
+  'amalfi-flex-banner': 'features',
 };
 
 function slugify(str) {
@@ -41,7 +45,11 @@ function getItems(element, type) {
   switch (type) {
     case 'curators':
     case 'services':
+    case 'experiences':
+    case 'stays':
       return [...element.querySelectorAll(':scope > article')];
+    case 'features':
+      return [...element.children].filter((c) => c.querySelector('h3'));
     case 'destinations':
       return [...element.children].filter((c) => c.tagName === 'A' || c.tagName === 'ARTICLE');
     case 'testimonials':
@@ -60,8 +68,8 @@ function getItemKey(item, type) {
       .replace(/,[^,]*$/, '') // trailing ", Location"
       .trim();
   }
-  const h3 = item.querySelector('h3');
-  return h3 ? h3.textContent.trim() : '';
+  const title = item.querySelector('h3, [class*="title"]');
+  return title ? title.textContent.trim() : '';
 }
 
 export default function parse(element, { document }) {

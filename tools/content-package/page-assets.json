@@ -1,6 +1,49 @@
 {
   "assets": [
-    { "path": "/content/dam/luxtravelcf/images/home/hero.png", "source": "https://speak-salsa-30519598.figma.site/assets/50c22.png", "alt": "" },
-    { "path": "/content/dam/luxtravelcf/images/home/closing.png", "source": "https://speak-salsa-30519598.figma.site/assets/5d862b1041193d6f5db47a2817451ce084edc62b-CtdJVyL4.png", "alt": "" }
+    {
+      "path": "/content/dam/luxtravelcf/images/home/hero.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/50c22.png",
+      "alt": ""
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/home/closing.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/5d862b1041193d6f5db47a2817451ce084edc62b-CtdJVyL4.png",
+      "alt": ""
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/hero.jpg",
+      "source": "https://images.unsplash.com/photo-1575611246528-f6e0a8424806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+      "alt": "Amalfi Coast at sunset"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/coastal-terrace.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/021ad.png",
+      "alt": "Amalfi coastal terrace"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/artisan-at-work.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/97649.png",
+      "alt": "Traditional artisan at work"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/gallery-1.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/1317e.png",
+      "alt": "Amalfi scene"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/gallery-2.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/c8006.png",
+      "alt": "Amalfi scene"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/gallery-3.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/531cc.png",
+      "alt": "Amalfi scene"
+    },
+    {
+      "path": "/content/dam/luxtravelcf/images/amalfi-coast/closing.png",
+      "source": "https://speak-salsa-30519598.figma.site/assets/0da1f.png",
+      "alt": ""
+    }
   ]
 }

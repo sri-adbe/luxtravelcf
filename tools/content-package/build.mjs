@@ -36,7 +36,7 @@ const NAME = FRAGMENTS_ONLY ? 'luxtravelcf-content-fragments' : 'luxtravelcf-con
 const VERSION = '1.0.0';
 const SITE_ROOT = '/content/luxtravelcf';
 // site pages: JCR path -> source XML in tools/content-package/pages/
-const PAGES = ['index', 'nav', 'footer'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
+const PAGES = ['index', 'nav', 'footer', 'destinations/amalfi-coast'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
 const CONF = '/conf/luxtravelcf';
 const DAM = '/content/dam/luxtravelcf';
 const ENDPOINT = '/content/cq:graphql/luxtravelcf/endpoint';
@@ -218,8 +218,9 @@ async function download(url) {
 
 async function writeAsset({ path, source, alt }) {
   const binary = await download(source);
-  const size = pngSize(binary);
-  const mime = 'image/png';
+  const ext = path.split('.').pop().toLowerCase();
+  const mime = { jpg: 'image/jpeg', jpeg: 'image/jpeg', svg: 'image/svg+xml' }[ext] || 'image/png';
+  const size = mime === 'image/png' ? pngSize(binary) : null;
   const name = path.substring(path.lastIndexOf('/') + 1);
   const dir = write(path, {
     props: { 'jcr:primaryType': 'dam:Asset', 'jcr:mixinTypes': raw('[mix:referenceable]') },
@@ -421,6 +422,18 @@ function writeSite() {
         'jcr:title': 'Lux Traveler',
         // the Edge Delivery Services cloud configuration is resolved through this binding
         'cq:conf': CONF,
+        'cq:template': '/libs/core/franklin/templates/page',
+        'sling:resourceType': 'core/franklin/components/page/v1/page',
+      },
+    }]],
+  });
+  // folder pages above nested pages (e.g. /destinations), only created if missing
+  write(`${SITE_ROOT}/destinations`, {
+    props: { 'jcr:primaryType': 'cq:Page' },
+    children: [['jcr:content', {
+      props: {
+        'jcr:primaryType': 'cq:PageContent',
+        'jcr:title': 'Destinations',
         'cq:template': '/libs/core/franklin/templates/page',
         'sling:resourceType': 'core/franklin/components/page/v1/page',
       },

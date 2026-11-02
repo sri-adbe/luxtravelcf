@@ -7,7 +7,7 @@ Fragment Type. Models, fragments and queries are described in `tools/content-fra
 ## Universal Editor fields
 
 - **Content Fragment List** (`content-fragment-list`): *Fragment Type* select (`classes`): `curators`,
-  `destinations`, `services`, `testimonials`. Selects the persisted query and layout.
+  `destinations`, `services`, `testimonials`, `experiences`, `stays`, `features`. Selects the persisted query and layout.
 - **Content Fragment** (`content-fragment-list-item`): *Content Fragment* picker (`fragment`, limited to
   `/content/dam/luxtravelcf/fragments`) and a hidden `variation`.
 
@@ -26,5 +26,8 @@ place, in the properties rail, or in the Content Fragment Editor.
 | destinations | Destination | `luxtravelcf/destinationByPath` |
 | services | Service | `luxtravelcf/serviceByPath` |
 | testimonials | Testimonial | `luxtravelcf/testimonialByPath` |
+| experiences | Experience | `luxtravelcf/experienceByPath` |
+| stays | Stay | `luxtravelcf/stayByPath` |
+| features | Feature | `luxtravelcf/featureByPath` |
 
 Items whose fragment can't be loaded are hidden.
