@@ -22,6 +22,12 @@
         "label": "Keywords"
       },
       {
+        "component": "aem-content",
+        "name": "footer",
+        "label": "Footer",
+        "description": "Optional footer page for this page (default: the site footer)"
+      },
+      {
         "component": "select",
         "name": "template",
         "label": "Template",

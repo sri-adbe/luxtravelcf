@@ -109,3 +109,55 @@ footer .footer .footer-bottom p {
     margin-top: 86px;
   }
 }
+
+/* destination template (source /destinations/*): larger serif brand, dark contact text, extra rule */
+body.destination footer {
+  border-top: 1px solid var(--border-color);
+}
+
+body.destination footer .footer .footer-column h2 + p {
+  margin-top: 16px;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+body.destination footer .footer .footer-top p.footer-brand {
+  color: var(--accent-hover-color);
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  letter-spacing: 0.015em;
+  line-height: 54px;
+  text-transform: uppercase;
+}
+
+body.destination footer .footer .footer-top p.footer-brand + p {
+  margin-top: 19px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+body.destination footer .footer .footer-column h2 {
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+/* the city list is set in the serif face on the source */
+body.destination footer .footer .footer-column:nth-child(2) h2 + p {
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+}
+
+/* source: a 1px rule 64px below the columns, then the bottom bar 24px below it */
+body.destination footer .footer .footer-bottom::before {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-top: 64px;
+  background-color: var(--border-color);
+}
+
+body.destination footer .footer .footer-bottom .default-content-wrapper {
+  margin-top: 24px;
+}

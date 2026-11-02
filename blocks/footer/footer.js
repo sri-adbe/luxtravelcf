@@ -9,9 +9,15 @@ import { loadFragment } from '../fragment/fragment.js';
  */
 function footerPaths() {
   const footerMeta = getMetadata('footer');
+  const isLocal = window.location.hostname === 'localhost';
   const paths = [];
-  if (footerMeta) paths.push(new URL(footerMeta, window.location).pathname);
-  if (window.location.hostname === 'localhost') paths.push('/content/footer');
+  if (footerMeta) {
+    const metaPath = new URL(footerMeta, window.location).pathname;
+    // the local preview serves pages under /content
+    if (isLocal && !metaPath.startsWith('/content/')) paths.push(`/content${metaPath}`);
+    paths.push(metaPath);
+  }
+  if (isLocal) paths.push('/content/footer');
   paths.push('/footer');
   return [...new Set(paths)];
 }

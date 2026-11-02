@@ -205,6 +205,8 @@ export default {
     const metadata = WebImporter.Blocks.getMetadata(document);
     // lowercase key: it is the meta name (getMetadata('template')) and the page model field name
     metadata.template = PAGE_TEMPLATE.name;
+    // destination pages use their own footer page (source: different contact address and styling)
+    metadata.footer = '/destinations/footer';
     main.append(WebImporter.Blocks.getMetadataBlock(document, metadata));
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
