@@ -132,3 +132,88 @@ main .hero-fullbleed a.button:any-link {
     animation-delay: 1s;
   }
 }
+
+/* destination template: source section.amalfi-hero */
+body.destination .hero-fullbleed {
+  height: 100dvh;
+  min-height: 100dvh;
+}
+
+body.destination .hero-fullbleed.framed {
+  height: 900px;
+  min-height: 0;
+}
+
+/* source .amalfi-hero-overlay */
+body.destination .hero-fullbleed .hero-fullbleed-media::after {
+  background: #07070973;
+}
+
+/* source .amalfi-hero-content */
+body.destination .hero-fullbleed .hero-fullbleed-content {
+  box-sizing: border-box;
+  gap: 32px;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 clamp(24px, 6vw, 80px);
+}
+
+/* source .amalfi-eyebrow: label between two dashes */
+body.destination .hero-fullbleed .hero-fullbleed-content > p:not(.hero-fullbleed-cta):has(+ h1) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: none;
+  margin: 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: var(--body-font-weight-semibold);
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+body.destination .hero-fullbleed .hero-fullbleed-content > p:not(.hero-fullbleed-cta):has(+ h1)::before,
+body.destination .hero-fullbleed .hero-fullbleed-content > p:not(.hero-fullbleed-cta):has(+ h1)::after {
+  content: '';
+  flex-shrink: 0;
+  width: 24px;
+  height: 1px;
+  background-color: currentcolor;
+}
+
+/* source .amalfi-hero-h1 */
+body.destination .hero-fullbleed .hero-fullbleed-content h1 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(48px, 7vw, 80px);
+  letter-spacing: normal;
+  line-height: 1.05;
+}
+
+/* source .amalfi-hero-sub: #faf8f4 at opacity 0.9, set on the color because the fade-up animation owns opacity */
+body.destination .hero-fullbleed .hero-fullbleed-content > h1 ~ p:not(.hero-fullbleed-cta) {
+  max-width: none;
+  margin: 0;
+  color: rgb(250 248 244 / 90%);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+/* source .amalfi-cta and its 16px top spacer */
+body.destination .hero-fullbleed .hero-fullbleed-cta {
+  padding-top: 16px;
+}
+
+body.destination main .hero-fullbleed a.button:any-link {
+  border: 0;
+  padding: 16px 32px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}

@@ -459,3 +459,120 @@ main .section.image-background .default-content-wrapper > p > picture:only-child
     width: 64px;
   }
 }
+
+/*
+ * destination template (page metadata Template = destination)
+ * source: /destinations/* (.amalfi-section, .amalfi-section-head, .amalfi-cta-section)
+ * rules are ordered by ascending specificity per target (no-descending-specificity)
+ */
+body.destination main > .section:not(.hero-fullbleed-container, .tagline) {
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+
+body.destination main > .section > div + div {
+  margin-top: 80px;
+}
+
+body.destination main > .section.centered > div + div {
+  margin-top: 64px;
+}
+
+/* gallery: source .amalfi-gallery-section and its caption */
+body.destination main > .section.cards-gallery-container {
+  padding: 100px 0;
+}
+
+body.destination main > .section.cards-gallery-container > div + div {
+  margin-top: 48px;
+}
+
+body.destination main > .section.cards-gallery-container > .default-content-wrapper > p {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* closing call-to-action: source .amalfi-cta-section / .amalfi-cta-content */
+body.destination main > .section.closing {
+  min-height: 480px;
+  padding: clamp(80px, 11vw, 160px) var(--section-padding-inline);
+}
+
+body.destination main > .section.closing > .default-content-wrapper {
+  gap: 40px;
+  width: 100%;
+  max-width: 840px;
+  padding: 0;
+}
+
+body.destination main .section.closing a.button:any-link {
+  border: 0;
+  padding: 16px 32px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+/* eyebrow: source .amalfi-eyebrow / .amalfi-eyebrow-text */
+body.destination main > .section > .default-content-wrapper > p:not(.button-wrapper):has(+ h1, + h2) {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+
+/* section head: source .amalfi-section-head / .amalfi-section-h2 / .amalfi-section-sub, stacked below 900px */
+body.destination main > .section > .default-content-wrapper > h2 {
+  margin: 16px 0 0;
+  font-size: clamp(38px, 4.5vw, 56px);
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
+body.destination main > .section > .default-content-wrapper:has(> h2 + p) > h2 + p:not(.button-wrapper) {
+  max-width: 400px;
+  margin: 16px 0 4px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (width >= 900px) {
+  body.destination main > .section:not(.centered, .closing, .tagline) > .default-content-wrapper:has(> h2 + p) {
+    column-gap: 48px;
+  }
+
+  body.destination main > .section:not(.centered, .closing, .tagline) > .default-content-wrapper:has(> h2 + p) > h2 + p {
+    max-width: 400px;
+    margin: 0 0 4px;
+  }
+}
+
+body.destination main > .section.closing > .default-content-wrapper > h2 {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 60px);
+  line-height: 1.15;
+}
+
+body.destination main .section.closing .default-content-wrapper > p:last-child {
+  max-width: 620px;
+  margin: -16px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* centered section head: source .amalfi-flex-header */
+body.destination main > .section.centered:not(.closing) > .default-content-wrapper:has(> h2) {
+  gap: 24px;
+}
+
+body.destination main > .section.centered:not(.closing) > .default-content-wrapper > h2 {
+  margin: 0;
+  font-size: clamp(40px, 4.5vw, 56px);
+}
+
+body.destination main > .section.centered:not(.closing) > .default-content-wrapper:has(> h2 + p) > h2 + p:not(.button-wrapper) {
+  max-width: 720px;
+  margin: 0;
+  font-size: 16px;
+}
