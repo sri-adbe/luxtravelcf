@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://speak-salsa-30519598.figma.site/",
+  "path": "index",
+  "timestamp": "2026-11-02T16:24:49.551Z",
+  "title": "Lux Traveler | Bespoke Travel Curation",
+  "template": "home",
+  "blocks": [
+    "hero-fullbleed",
+    "hero-fullbleed",
+    "content-fragment-list",
+    "content-fragment-list",
+    "content-fragment-list",
+    "content-fragment-list"
+  ]
+}

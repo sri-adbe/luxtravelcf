@@ -1,0 +1,11 @@
+{
+  "variantName": "hero-fullbleed",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Full-bleed photo background with dark overlay, ~900px tall at 1440 wide, centered serif h1 in white, italic subline, terracotta CTA button.",
+  "contentPattern": "image + heading + text + CTA",
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Top-of-page hero spanning the full viewport width: a background photo with a centered headline, a short subline and a single call-to-action (e.g. 'Talk to a Travel Advisor').",
+  "reuseGuidance": "Use for page-opening statements over a photograph. Row 1: background image (with alt text). Row 2: rich text with an h1, a subline paragraph and a CTA link. For a hero without a full-bleed photo use the base hero block."
+}

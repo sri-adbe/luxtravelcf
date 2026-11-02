@@ -13,9 +13,11 @@
       "button",
       "title",
       "hero",
+      "hero-fullbleed",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "content-fragment-list"
     ]
   },
   {
@@ -37,6 +39,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "content-fragment-list",
+    "components": [
+      "content-fragment-list-item"
     ]
   }
 ]

@@ -180,12 +180,91 @@
     ]
   },
   {
+    "id": "content-fragment-list",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "curators",
+        "label": "Fragment Type",
+        "description": "Content Fragment Model of the items, also sets the list layout",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Curators",
+            "value": "curators"
+          },
+          {
+            "name": "Destinations",
+            "value": "destinations"
+          },
+          {
+            "name": "Services",
+            "value": "services"
+          },
+          {
+            "name": "Testimonials",
+            "value": "testimonials"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "content-fragment-list-item",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "fragment",
+        "label": "Content Fragment",
+        "valueType": "string",
+        "variationName": "variation",
+        "validation": {
+          "rootPath": "/content/dam/luxtravelcf/fragments"
+        }
+      },
+      {
+        "component": "text",
+        "name": "variation",
+        "label": "Variation",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "hero-fullbleed",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },
