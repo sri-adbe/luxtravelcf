@@ -20,6 +20,23 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "select",
+        "name": "template",
+        "label": "Template",
+        "description": "Page layout; Destination applies the destination page spacing and typography",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Destination",
+            "value": "destination"
+          }
+        ]
       }
     ]
   },
@@ -168,6 +185,25 @@
     ]
   },
   {
+    "id": "cards-gallery-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -183,6 +219,41 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-text-image",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Image on top",
+            "value": "image-top"
+          }
+        ]
       }
     ]
   },
@@ -231,6 +302,18 @@
           {
             "name": "Testimonials",
             "value": "testimonials"
+          },
+          {
+            "name": "Experiences",
+            "value": "experiences"
+          },
+          {
+            "name": "Stays",
+            "value": "stays"
+          },
+          {
+            "name": "Features",
+            "value": "features"
           }
         ]
       }

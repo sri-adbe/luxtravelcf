@@ -6,6 +6,13 @@
   "contentPattern": "image + heading + text + CTA",
   "options": [],
   "memberVariantIds": [],
-  "usage": "Top-of-page hero spanning the full viewport width: a background photo with a centered headline, a short subline and a single call-to-action (e.g. 'Talk to a Travel Advisor').",
-  "reuseGuidance": "Use for page-opening statements over a photograph. Row 1: background image (with alt text). Row 2: rich text with an h1, a subline paragraph and a CTA link. For a hero without a full-bleed photo use the base hero block."
+  "usage": {
+    "pagesUsing": [
+      "/destinations/amalfi-coast"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-02"
+  },
+  "reuseGuidance": "Use for page-opening statements over a photograph. Row 1: background image (with alt text). Row 2: rich text with an h1, a subline paragraph and a CTA link. For a hero without a full-bleed photo use the base hero block.",
+  "usageDescription": "Top-of-page hero spanning the full viewport width: a background photo with a centered headline, a short subline and a single call-to-action (e.g. 'Talk to a Travel Advisor')."
 }

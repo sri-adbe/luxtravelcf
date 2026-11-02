@@ -77,6 +77,8 @@
         "hero-fullbleed",
         "cards",
         "columns",
+        "columns-text-image",
+        "cards-gallery",
         "fragment",
         "content-fragment-list"
       ]

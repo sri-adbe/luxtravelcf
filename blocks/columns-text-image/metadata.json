@@ -1,0 +1,13 @@
+{
+  "variantName": "columns-text-image",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Default: 2-column grid at desktop (text left: eyebrow, serif h2, body paragraph, short decorative rule drawn by CSS; rounded portrait image right). Option image-top: a wide rounded image sits above the text block at every breakpoint, typically in a beige section.",
+  "contentPattern": "one row, two cells: rich text cell (eyebrow, h2, paragraph) and image cell; option image-top stacks a full-width image above the text",
+  "options": [
+    { "class": "image-top", "label": "Image on top" }
+  ],
+  "memberVariantIds": [],
+  "usage": "Editorial intro or story section pairing a short text block (eyebrow, headline, paragraph) with a single photograph, e.g. 'The Destination' or 'Local Legacies' on destination pages.",
+  "reuseGuidance": "Author one row with two cells: a rich text cell (eyebrow paragraph, h2, body paragraph) and an image cell. Cell order sets the desktop side of the image. Use the image-top option to stack a wide image above the text. Decorative dashes/rules are CSS, do not author them. For more than two columns or arbitrary content use the base columns block."
+}

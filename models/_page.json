@@ -21,6 +21,23 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "select",
+          "name": "template",
+          "label": "Template",
+          "description": "Page layout; Destination applies the destination page spacing and typography",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Destination",
+              "value": "destination"
+            }
+          ]
         }
       ]
     }

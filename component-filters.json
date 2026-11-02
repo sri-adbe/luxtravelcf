@@ -16,14 +16,28 @@
       "hero-fullbleed",
       "cards",
       "columns",
+      "columns-text-image",
+      "cards-gallery",
       "fragment",
       "content-fragment-list"
+    ]
+  },
+  {
+    "id": "cards-gallery",
+    "components": [
+      "cards-gallery-card"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "columns-text-image",
+    "components": [
+      "column"
     ]
   },
   {

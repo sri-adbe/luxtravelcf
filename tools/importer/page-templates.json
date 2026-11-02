@@ -128,6 +128,150 @@
           ]
         }
       ]
+    },
+    {
+      "name": "destination",
+      "urls": [
+        "https://speak-salsa-30519598.figma.site/destinations/amalfi-coast"
+      ],
+      "representativeUrl": "https://speak-salsa-30519598.figma.site/destinations/amalfi-coast",
+      "description": "Destination detail page (Amalfi Coast): hero, intro, Content Fragment lists for experiences, stays and features, gallery and closing CTA",
+      "blocks": [
+        {
+          "name": "hero-fullbleed",
+          "instances": [
+            "section.amalfi-hero"
+          ]
+        },
+        {
+          "name": "columns-text-image",
+          "instances": [
+            "section.amalfi-intro",
+            "section.amalfi-cultural"
+          ]
+        },
+        {
+          "name": "content-fragment-list",
+          "instances": [
+            ".amalfi-cards-grid",
+            ".amalfi-acc-grid",
+            ".amalfi-flex-banner"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            ".amalfi-gallery-grid"
+          ]
+        }
+      ],
+      "urlPattern": "/destinations/*",
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Hero",
+          "selector": [
+            "section.amalfi-hero"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-fullbleed"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "Destination intro",
+          "selector": [
+            "section.amalfi-intro"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-text-image"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "Bespoke experiences",
+          "selector": [
+            "section.amalfi-section:has(.amalfi-cards-grid)"
+          ],
+          "style": "beige",
+          "blocks": [
+            "content-fragment-list"
+          ],
+          "defaultContent": [
+            "section.amalfi-section:has(.amalfi-cards-grid) > .amalfi-section-head"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Accommodations",
+          "selector": [
+            "section.amalfi-section:has(.amalfi-acc-grid)"
+          ],
+          "style": null,
+          "blocks": [
+            "content-fragment-list"
+          ],
+          "defaultContent": [
+            "section.amalfi-section:has(.amalfi-acc-grid) > .amalfi-section-head"
+          ]
+        },
+        {
+          "id": "rc5",
+          "name": "Local legacies",
+          "selector": [
+            "section.amalfi-cultural"
+          ],
+          "style": "beige",
+          "blocks": [
+            "columns-text-image"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc6",
+          "name": "Flexibility",
+          "selector": [
+            "section.amalfi-flex-section"
+          ],
+          "style": "centered",
+          "blocks": [
+            "content-fragment-list"
+          ],
+          "defaultContent": [
+            "section.amalfi-flex-section > .amalfi-flex-header"
+          ]
+        },
+        {
+          "id": "rc7",
+          "name": "Gallery",
+          "selector": [
+            "section.amalfi-gallery-section"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-gallery"
+          ],
+          "defaultContent": [
+            "section.amalfi-gallery-section > p"
+          ]
+        },
+        {
+          "id": "rc8",
+          "name": "Closing CTA",
+          "selector": [
+            "section.amalfi-cta-section"
+          ],
+          "style": "closing, image-background, centered",
+          "blocks": [],
+          "defaultContent": [
+            "section.amalfi-cta-section"
+          ]
+        }
+      ]
     }
   ]
 }

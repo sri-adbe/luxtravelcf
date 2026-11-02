@@ -143,6 +143,17 @@ export default async function decorate(block) {
     if (window.location.hash === DIALOG_HASH) dialog.open(cta);
   }
 
+  // links to home page sections (e.g. /#services) scroll in place when that section is on this page
+  nav.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="#"]');
+    if (!link?.hash || link.hash === DIALOG_HASH || link.origin !== window.location.origin) return;
+    const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    window.history.pushState(null, '', link.hash);
+  });
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);

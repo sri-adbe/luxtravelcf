@@ -1,0 +1,11 @@
+{
+  "variantName": "cards-gallery",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "3 equal square rounded images in a row at desktop (410px each at 1440), optional small uppercase centered caption below.",
+  "contentPattern": "one card per image (image cell, optional caption text cell), 3 square images in a row",
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Image-only gallery strip of square photos, e.g. the three Amalfi scenes on destination pages.",
+  "reuseGuidance": "Add one card per photo: an image (with alt text) and an optional short caption. Images are cropped square. Use three cards for a full row at desktop. For cards with headings, body copy or links use the base cards block."
+}

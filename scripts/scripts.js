@@ -132,6 +132,13 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
+  // documents rendered from authored metadata tables can carry capitalised names
+  // (e.g. <meta name="Template">); getMetadata() matches lowercase names only
+  ['template', 'theme'].forEach((name) => {
+    if (doc.head.querySelector(`meta[name="${name}"]`)) return;
+    const meta = doc.head.querySelector(`meta[name="${name}" i]`);
+    if (meta) meta.setAttribute('name', name);
+  });
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {

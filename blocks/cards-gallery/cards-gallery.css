@@ -1,0 +1,57 @@
+/* source: .amalfi-gallery-grid / .amalfi-gallery-img-wrap / .amalfi-gallery-img */
+.cards-gallery > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-gallery > ul > li {
+  margin: 0;
+  min-width: 0;
+}
+
+.cards-gallery .cards-gallery-card-image {
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-gallery .cards-gallery-card-image p,
+.cards-gallery .cards-gallery-card-image picture {
+  display: block;
+  margin: 0;
+  height: 100%;
+}
+
+.cards-gallery .cards-gallery-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-gallery .cards-gallery-card-body {
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* empty caption cells stay in the DOM for Universal Editor but take no space */
+.cards-gallery .cards-gallery-card-body[hidden],
+.cards-gallery .cards-gallery-card-body:empty {
+  display: none;
+}
+
+/* source switches to 1 column at width <= 900px, so 3 columns start above 900px */
+@media (width > 900px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-gallery .cards-gallery-card-image {
+    height: 360px;
+  }
+}

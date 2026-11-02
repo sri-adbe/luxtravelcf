@@ -1,0 +1,66 @@
+{
+  "definitions": [
+    {
+      "title": "Columns Text Image",
+      "id": "columns-text-image",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/columns/v1/columns",
+            "template": {
+              "name": "Columns Text Image",
+              "model": "columns-text-image",
+              "columns": "2",
+              "rows": "1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns-text-image",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "",
+          "label": "Columns"
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "",
+          "label": "Rows"
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Options",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Image on top",
+              "value": "image-top"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns-text-image",
+      "components": [
+        "column"
+      ]
+    }
+  ]
+}

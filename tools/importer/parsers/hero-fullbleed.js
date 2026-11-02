@@ -26,10 +26,15 @@ export default function parse(element, { document }) {
   const content = element.querySelector('.hero-video-content') || element;
   const textCell = document.createDocumentFragment();
   const heading = content.querySelector('h1, .hero-video-headline');
-  const sub = content.querySelector('p.hero-video-sub') || content.querySelector('p');
-  const ctaSource = content.querySelector('.hero-video-cta, a, button');
+  // optional eyebrow before the heading (destination pages: "Amalfi Coast, Italy")
+  const eyebrow = heading?.previousElementSibling?.tagName === 'P' ? heading.previousElementSibling : null;
+  const sub = content.querySelector('p.hero-video-sub')
+    || (heading?.nextElementSibling?.tagName === 'P' ? heading.nextElementSibling : null)
+    || [...content.querySelectorAll('p')].find((p) => p !== eyebrow);
+  const ctaSource = content.querySelector('.hero-video-cta, .amalfi-cta, a, button');
 
   const textNodes = [];
+  if (eyebrow) textNodes.push(eyebrow);
   if (heading) textNodes.push(heading);
   if (sub) textNodes.push(sub);
   if (ctaSource && ctaSource.textContent.trim()) {
