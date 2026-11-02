@@ -516,7 +516,7 @@ var CustomImportScript = (() => {
       executeTransformers("afterTransform", main, payload);
       main.appendChild(document.createElement("hr"));
       const metadata = WebImporter.Blocks.getMetadata(document);
-      metadata.Template = PAGE_TEMPLATE.name;
+      metadata.template = PAGE_TEMPLATE.name;
       main.append(WebImporter.Blocks.getMetadataBlock(document, metadata));
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);

@@ -203,7 +203,8 @@ export default {
     main.appendChild(document.createElement('hr'));
     // page metadata plus the page template, which applies the destination layout (body.destination)
     const metadata = WebImporter.Blocks.getMetadata(document);
-    metadata.Template = PAGE_TEMPLATE.name;
+    // lowercase key: it is the meta name (getMetadata('template')) and the page model field name
+    metadata.template = PAGE_TEMPLATE.name;
     main.append(WebImporter.Blocks.getMetadataBlock(document, metadata));
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
