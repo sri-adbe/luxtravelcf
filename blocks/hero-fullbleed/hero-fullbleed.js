@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
  * Full-bleed hero: background image with overlay, centered heading, subline and CTA.
@@ -19,6 +20,9 @@ export default function decorate(block) {
       const picture = cell.querySelector('picture');
       if (picture && !media.querySelector('picture')) {
         media.append(picture);
+      } else if (cell.textContent.trim()) {
+        // keep the Universal Editor rich text field on the element that now holds the text
+        moveInstrumentation(cell, content);
       }
       // move remaining authored content (text, links) into the content area,
       // dropping whitespace and wrappers left empty after the picture moved out
@@ -57,6 +61,11 @@ export default function decorate(block) {
       { media: '(min-width: 900px)', width: '2000' },
       { width: '900' },
     ]);
+    moveInstrumentation(img, optimized.querySelector('img'));
     img.closest('picture').replaceWith(optimized);
   });
+
+  // Universal Editor sizes its frame to the page height: a viewport-relative hero
+  // would keep growing with the frame, so use a fixed height when framed
+  if (window.self !== window.top) block.classList.add('framed');
 }

@@ -12,6 +12,11 @@
   text-align: center;
 }
 
+/* inside an editor frame (Universal Editor) the viewport grows with the page */
+.hero-fullbleed.framed {
+  height: 900px;
+}
+
 /* background image: source .hero-video-bg */
 .hero-fullbleed .hero-fullbleed-media {
   position: absolute;
