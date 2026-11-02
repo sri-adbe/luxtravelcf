@@ -1,0 +1,54 @@
+/* Lux Traveler brand tokens, extracted from the source site */
+:root {
+  /* colors */
+  --background-color: #faf8f4;
+  --light-color: #f0ece1;
+  --dark-color: #262322;
+  --text-color: #262322;
+  --muted-text-color: #7a7570;
+  --accent-color: #c35537;
+  --accent-hover-color: #85311f;
+  --link-color: #c35537;
+  --link-hover-color: #85311f;
+  --border-color: #e3ddd0;
+  --rule-color: #d7bcaf;
+  --overlay-light: rgb(250 248 244 / 88%);
+
+  /* fonts */
+  --body-font-family: 'Schibsted Grotesk', schibsted-grotesk-fallback, arial, sans-serif;
+  --heading-font-family: 'Cormorant Garamond', cormorant-garamond-fallback, georgia, serif;
+  --body-font-weight-medium: 500;
+  --body-font-weight-semibold: 600;
+
+  /* body sizes */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 12px;
+  --body-font-size-xs: 11px;
+  --label-font-size: 10px;
+  --label-font-size-s: 9px;
+
+  /* heading sizes */
+  --heading-font-size-xxl: clamp(52px, 8vw, 110px);
+  --heading-font-size-xl: clamp(38px, 4vw, 57px);
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
+
+  /* spacing */
+  --section-padding-inline: clamp(24px, 6.25vw, 80px);
+  --section-padding-block: 76px;
+
+  /* motion */
+  --transition-fast: 0.22s;
+  --ease-out: cubic-bezier(0.22, 0.6, 0.36, 1);
+
+  /* nav height */
+  --nav-height: 88px;
+}
+
+@media (width >= 600px) {
+  :root {
+    --section-padding-block: 114px;
+  }
+}

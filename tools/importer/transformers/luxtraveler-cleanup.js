@@ -63,8 +63,11 @@ export default function transform(hookName, element, payload) {
         const a = element.ownerDocument.createElement('a');
         a.href = 'mailto:curator@voyageconcierge.com';
         a.textContent = button.textContent.trim();
+        // bold link = primary button in EDS
+        const strong = element.ownerDocument.createElement('strong');
+        strong.append(a);
         const p = element.ownerDocument.createElement('p');
-        p.append(a);
+        p.append(strong);
         button.replaceWith(p);
       });
     }

@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,78 +12,42 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
-  /* nav height */
-  --nav-height: 64px;
-}
-
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: cormorant-garamond-fallback;
+  size-adjust: 84%;
+  src: local('Georgia');
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: schibsted-grotesk-fallback;
+  size-adjust: 99%;
   src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
 }
 
 body {
   display: none;
+  min-width: 320px;
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 body.appear {
   display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 header {
@@ -107,13 +73,22 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 400;
+  line-height: 1;
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  letter-spacing: -0.035em;
+}
+
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
@@ -142,10 +117,6 @@ pre {
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
-}
-
 input,
 textarea,
 select,
@@ -158,16 +129,22 @@ a:any-link {
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
 }
 
-/* buttons */
+a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+/* buttons: source .button (terracotta fill, small uppercase label) */
+main .button-container,
 p.button-wrapper {
-  margin: 12px 0;
+  margin: 0;
 }
 
 a.button:any-link,
@@ -178,52 +155,40 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
-  text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-a.button.primary,
-button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 0;
+  padding: 14px 23px;
+  background-color: var(--accent-color);
   color: var(--background-color);
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--body-font-weight-semibold);
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: normal;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
-a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+a.button:hover,
+a.button:focus-visible,
+button.button:hover,
+button.button:focus-visible {
+  border-color: var(--accent-hover-color);
+  background-color: var(--accent-hover-color);
+  color: var(--background-color);
+  transform: translateY(-2px);
 }
 
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+a.button:focus-visible,
+button.button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
+/* secondary: source .button-outline */
 a.button.secondary,
 button.button.secondary {
   border-color: var(--text-color);
@@ -235,47 +200,25 @@ a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
-a.button.accent,
-button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
+  border-color: var(--text-color);
+  background-color: var(--text-color);
   color: var(--background-color);
 }
 
-a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+a.button[aria-disabled="true"],
+button.button:disabled {
+  border-color: var(--border-color);
+  background-color: var(--border-color);
+  color: var(--muted-text-color);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+@media (prefers-reduced-motion: reduce) {
+  a.button:hover,
+  button.button:hover {
+    transform: none;
+  }
 }
 
 main img {
@@ -297,29 +240,212 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
+  padding: var(--section-padding-block) 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
+  max-width: none;
+  margin: 0;
+  padding: 0 var(--section-padding-inline);
 }
 
-main > .section:first-of-type {
-  margin-top: 0;
+main > .section > div + div {
+  margin-top: 46px;
 }
 
+/* full-bleed hero sits edge to edge */
+main > .section.hero-fullbleed-container {
+  padding: 0;
+}
+
+main > .section.hero-fullbleed-container > div {
+  padding: 0;
+}
+
+/* default content */
+main .default-content-wrapper > p {
+  color: var(--muted-text-color);
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+}
+
+main .default-content-wrapper > h2 {
+  margin: 17px 0 0;
+}
+
+/* eyebrow: the short label right before a heading */
+main .default-content-wrapper > p:has(+ h1, + h2) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--accent-color);
+  font-size: var(--label-font-size);
+  font-weight: var(--body-font-weight-semibold);
+  letter-spacing: 0.065em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+main .default-content-wrapper > p:has(+ h1, + h2)::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: currentcolor;
+}
+
+/* section head: eyebrow + heading on the left, intro aligned bottom right */
 @media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+  main > .section:not(.centered, .closing, .tagline) > .default-content-wrapper:has(> h2 + p) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: 56px;
+  }
+
+  main > .section:not(.centered, .closing, .tagline) > .default-content-wrapper:has(> h2 + p) > * {
+    grid-column: 1;
+  }
+
+  main > .section:not(.centered, .closing, .tagline) > .default-content-wrapper:has(> h2 + p) > h2 + p {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    max-width: 300px;
+    margin: 0 0 4px;
   }
 }
 
+main > .section > .default-content-wrapper:has(> h2 + p) > h2 + p {
+  max-width: 300px;
+  margin: 22px 0 0;
+}
+
 /* section metadata */
+main .section.beige,
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+}
+
+main .section.centered .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+main > .section.centered > div + div {
+  margin-top: 53px;
+}
+
+/* tagline strip: short italic-free serif label between two rules */
+main > .section.tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 62px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main .section.tagline .default-content-wrapper {
+  padding: 0;
+}
+
+main .section.tagline .default-content-wrapper > p {
+  display: flex;
+  align-items: center;
+  gap: 18px;
   margin: 0;
-  padding: 40px 0;
+  color: var(--accent-color);
+  font-family: var(--heading-font-family);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+main .section.tagline .default-content-wrapper > p em {
+  font-style: normal;
+}
+
+main .section.tagline .default-content-wrapper > p::before,
+main .section.tagline .default-content-wrapper > p::after {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background-color: var(--rule-color);
+}
+
+/* closing call-to-action over a faded photo */
+main > .section.closing {
+  display: grid;
+  place-items: center;
+  min-height: 350px;
+  padding: 80px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+main .section.closing .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .section.closing h2 {
+  margin: 24px 0 30px;
+  font-size: clamp(42px, 5vw, 67px);
+  letter-spacing: -0.04em;
+}
+
+main .section.closing .default-content-wrapper > p:last-child {
+  max-width: 500px;
+  margin: 22px 0 0;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+}
+
+main .section.image-background {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+main .section.image-background .default-content-wrapper > p:has(> picture:only-child) {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: 0;
+}
+
+main .section.image-background .default-content-wrapper > p:has(> picture:only-child)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay-light);
+}
+
+main .section.image-background .default-content-wrapper > p > picture:only-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (width >= 600px) {
+  main > .section.closing {
+    min-height: 410px;
+  }
+
+  main .section.tagline .default-content-wrapper > p {
+    font-size: 16px;
+  }
+
+  main .section.tagline .default-content-wrapper > p::before,
+  main .section.tagline .default-content-wrapper > p::after {
+    width: 64px;
+  }
 }

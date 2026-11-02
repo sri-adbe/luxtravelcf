@@ -67,7 +67,9 @@ var CustomImportScript = (() => {
       const href = ctaSource.tagName === "A" && ctaSource.getAttribute("href") ? ctaSource.getAttribute("href") : "#contact";
       a.setAttribute("href", href);
       a.textContent = ctaSource.textContent.trim();
-      p.appendChild(a);
+      const strong = document.createElement("strong");
+      strong.appendChild(a);
+      p.appendChild(strong);
       textNodes.push(p);
     }
     if (textNodes.length) {
@@ -187,8 +189,10 @@ var CustomImportScript = (() => {
           const a = element.ownerDocument.createElement("a");
           a.href = "mailto:curator@voyageconcierge.com";
           a.textContent = button.textContent.trim();
+          const strong = element.ownerDocument.createElement("strong");
+          strong.append(a);
           const p = element.ownerDocument.createElement("p");
-          p.append(a);
+          p.append(strong);
           button.replaceWith(p);
         });
       }

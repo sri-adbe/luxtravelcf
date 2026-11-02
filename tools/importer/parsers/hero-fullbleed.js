@@ -40,7 +40,10 @@ export default function parse(element, { document }) {
       : '#contact';
     a.setAttribute('href', href);
     a.textContent = ctaSource.textContent.trim();
-    p.appendChild(a);
+    // bold link = primary button in EDS
+    const strong = document.createElement('strong');
+    strong.appendChild(a);
+    p.appendChild(strong);
     textNodes.push(p);
   }
 
