@@ -136,8 +136,34 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Beige Background",
+            "value": "beige"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
+          },
+          {
+            "name": "Tagline Strip",
+            "value": "tagline"
+          },
+          {
+            "name": "Closing Call to Action",
+            "value": "closing"
+          },
+          {
+            "name": "Image Background",
+            "value": "image-background"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "anchor",
+        "label": "Anchor ID",
+        "description": "Optional id for in-page links, e.g. services makes #services scroll to this section"
       }
     ]
   },

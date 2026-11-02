@@ -12,3 +12,4 @@ helix-importer-ui
 !CLAUDE.md
 !AGENTS.md
 tools/content-package/target/
+migration-work/navigation-validation/

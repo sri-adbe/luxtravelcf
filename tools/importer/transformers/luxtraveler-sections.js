@@ -7,6 +7,7 @@
  * payload.template.sections from tools/importer/page-templates.json.
  */
 const MARKER = 'data-excat-section-id';
+const ANCHOR = 'data-excat-anchor';
 
 function findSectionElement(root, section) {
   const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
@@ -37,9 +38,13 @@ export default function transform(hookName, element, payload) {
       const el = findSectionElement(element, section);
       if (el) {
         const isFirst = i === 0;
-        if (!isFirst || section.style) {
+        // the source element id becomes the section's anchor (in-page nav targets like #services)
+        const anchorId = el.id || '';
+        const hasMeta = section.style || anchorId;
+        if (!isFirst || hasMeta) {
           const hr = document.createElement('hr');
-          if (section.style) hr.setAttribute(MARKER, section.id);
+          if (hasMeta) hr.setAttribute(MARKER, section.id);
+          if (anchorId) hr.setAttribute(ANCHOR, anchorId);
           if (isFirst) hr.setAttribute('data-excat-first-section', 'true');
           el.parentNode.insertBefore(hr, el);
         }
@@ -50,11 +55,15 @@ export default function transform(hookName, element, payload) {
   if (hookName === 'afterTransform') {
     for (let i = sections.length - 1; i >= 0; i -= 1) {
       const section = sections[i];
-      if (section.style) {
-        const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
+      const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
+      const anchorId = marker ? marker.getAttribute(ANCHOR) : '';
+      if (section.style || anchorId) {
+        const cells = {};
+        if (section.style) cells.style = section.style;
+        if (anchorId) cells.anchor = anchorId;
         const metadata = WebImporter.Blocks.createBlock(document, {
           name: 'Section Metadata',
-          cells: { style: section.style },
+          cells,
         });
 
         // Section content ends right before the next <hr> (or end of parent).
@@ -71,6 +80,7 @@ export default function transform(hookName, element, payload) {
 
         if (marker) {
           marker.removeAttribute(MARKER);
+          marker.removeAttribute(ANCHOR);
           if (marker.hasAttribute('data-excat-first-section')) {
             marker.remove();
           }

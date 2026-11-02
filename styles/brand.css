@@ -44,11 +44,12 @@
   --ease-out: cubic-bezier(0.22, 0.6, 0.36, 1);
 
   /* nav height */
-  --nav-height: 88px;
+  --nav-height: 72px;
 }
 
 @media (width >= 600px) {
   :root {
+    --nav-height: 88px;
     --section-padding-block: 114px;
   }
 }

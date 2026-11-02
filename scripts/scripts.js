@@ -118,6 +118,10 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  // an authored section anchor makes the section an in-page link target, e.g. #services
+  main.querySelectorAll('.section[data-anchor]').forEach((section) => {
+    section.id = section.dataset.anchor;
+  });
   decorateBlocks(main);
   decorateButtons(main);
 }

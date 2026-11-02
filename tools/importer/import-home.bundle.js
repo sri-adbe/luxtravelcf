@@ -221,6 +221,7 @@ var CustomImportScript = (() => {
 
   // tools/importer/transformers/luxtraveler-sections.js
   var MARKER = "data-excat-section-id";
+  var ANCHOR = "data-excat-anchor";
   function findSectionElement(root, section) {
     const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
     for (let i = 0; i < selectors.length; i += 1) {
@@ -246,9 +247,12 @@ var CustomImportScript = (() => {
         const el = findSectionElement(element, section);
         if (el) {
           const isFirst = i === 0;
-          if (!isFirst || section.style) {
+          const anchorId = el.id || "";
+          const hasMeta = section.style || anchorId;
+          if (!isFirst || hasMeta) {
             const hr = document.createElement("hr");
-            if (section.style) hr.setAttribute(MARKER, section.id);
+            if (hasMeta) hr.setAttribute(MARKER, section.id);
+            if (anchorId) hr.setAttribute(ANCHOR, anchorId);
             if (isFirst) hr.setAttribute("data-excat-first-section", "true");
             el.parentNode.insertBefore(hr, el);
           }
@@ -258,11 +262,15 @@ var CustomImportScript = (() => {
     if (hookName === "afterTransform") {
       for (let i = sections.length - 1; i >= 0; i -= 1) {
         const section = sections[i];
-        if (section.style) {
-          const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
+        const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
+        const anchorId = marker ? marker.getAttribute(ANCHOR) : "";
+        if (section.style || anchorId) {
+          const cells = {};
+          if (section.style) cells.style = section.style;
+          if (anchorId) cells.anchor = anchorId;
           const metadata = WebImporter.Blocks.createBlock(document, {
             name: "Section Metadata",
-            cells: { style: section.style }
+            cells
           });
           let anchor = marker || findSectionElement(element, section);
           if (anchor) {
@@ -276,6 +284,7 @@ var CustomImportScript = (() => {
           }
           if (marker) {
             marker.removeAttribute(MARKER);
+            marker.removeAttribute(ANCHOR);
             if (marker.hasAttribute("data-excat-first-section")) {
               marker.remove();
             }
