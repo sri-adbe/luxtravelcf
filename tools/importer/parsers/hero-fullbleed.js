@@ -37,7 +37,7 @@ export default function parse(element, { document }) {
     const a = document.createElement('a');
     const href = ctaSource.tagName === 'A' && ctaSource.getAttribute('href')
       ? ctaSource.getAttribute('href')
-      : '#contact';
+      : '#enquiry'; // source <button> opens the contact dialog; #enquiry links open it in EDS
     a.setAttribute('href', href);
     a.textContent = ctaSource.textContent.trim();
     // bold link = primary button in EDS

@@ -58,10 +58,11 @@ export default function transform(hookName, element, payload) {
       if (bg && closing.firstElementChild !== bg) {
         closing.prepend(bg);
       }
-      // The source CTA is a <button> without a target: make it an authorable enquiry link.
+      // The source CTA is a <button> that opens the contact dialog: link it to #enquiry,
+      // which opens the same dialog in EDS.
       closing.querySelectorAll('button').forEach((button) => {
         const a = element.ownerDocument.createElement('a');
-        a.href = 'mailto:curator@voyageconcierge.com';
+        a.href = '#enquiry';
         a.textContent = button.textContent.trim();
         // bold link = primary button in EDS
         const strong = element.ownerDocument.createElement('strong');

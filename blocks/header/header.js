@@ -1,6 +1,9 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
+// links to this anchor open the nav dialog (the contact enquiry)
+const DIALOG_HASH = '#enquiry';
+
 /**
  * Nav fragment locations, in order of preference:
  * the page's nav metadata (AEM author resolves this to the site's nav page),
@@ -122,16 +125,22 @@ export default async function decorate(block) {
     link.closest('.button-wrapper, .button-container')?.removeAttribute('class');
   });
 
-  // an optional fourth section is the dialog opened by the tools call to action
+  // an optional fourth section is a dialog, opened by the tools call to action
+  // and by any link to #enquiry on the page (including links rendered later by blocks)
   const dialogSection = sections[3];
   const cta = nav.querySelector('.nav-tools a.button') || nav.querySelector('.nav-tools a');
-  if (dialogSection && cta) {
+  if (dialogSection) {
     const dialog = buildDialog(dialogSection);
-    cta.setAttribute('aria-haspopup', 'dialog');
-    cta.addEventListener('click', (e) => {
+    const isTrigger = (link) => link === cta || link.hash === DIALOG_HASH;
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link || !isTrigger(link)) return;
       e.preventDefault();
-      dialog.open(cta);
+      dialog.open(link);
     });
+    document.querySelectorAll(`a[href$="${DIALOG_HASH}"]`).forEach((link) => link.setAttribute('aria-haspopup', 'dialog'));
+    cta?.setAttribute('aria-haspopup', 'dialog');
+    if (window.location.hash === DIALOG_HASH) dialog.open(cta);
   }
 
   const navWrapper = document.createElement('div');

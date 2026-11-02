@@ -64,7 +64,7 @@ var CustomImportScript = (() => {
     if (ctaSource && ctaSource.textContent.trim()) {
       const p = document.createElement("p");
       const a = document.createElement("a");
-      const href = ctaSource.tagName === "A" && ctaSource.getAttribute("href") ? ctaSource.getAttribute("href") : "#contact";
+      const href = ctaSource.tagName === "A" && ctaSource.getAttribute("href") ? ctaSource.getAttribute("href") : "#enquiry";
       a.setAttribute("href", href);
       a.textContent = ctaSource.textContent.trim();
       const strong = document.createElement("strong");
@@ -187,7 +187,7 @@ var CustomImportScript = (() => {
         }
         closing.querySelectorAll("button").forEach((button) => {
           const a = element.ownerDocument.createElement("a");
-          a.href = "mailto:curator@voyageconcierge.com";
+          a.href = "#enquiry";
           a.textContent = button.textContent.trim();
           const strong = element.ownerDocument.createElement("strong");
           strong.append(a);
