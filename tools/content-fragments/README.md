@@ -30,7 +30,7 @@ images in `/content/dam/luxtravelcf/images`.
 ## Option A: content package (recommended)
 
 `node tools/content-package/build.mjs` builds
-`tools/content-package/target/luxtravelcf-content-1.0.0.zip` (FileVault). It contains:
+`tools/content-package/target/luxtravelcf-content-1.1.0.zip` (FileVault). It contains:
 
 | Path | Content | Filter mode |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ images in `/content/dam/luxtravelcf/images`.
 Parent nodes (`/conf/luxtravelcf`, `/content/luxtravelcf`, …) are only created when missing.
 
 `node tools/content-package/build.mjs --fragments-only` builds
-`tools/content-package/target/luxtravelcf-content-fragments-1.0.0.zip` instead: the same package
+`tools/content-package/target/luxtravelcf-content-fragments-1.1.0.zip` instead: the same package
 without the site root, the home page and its two images. Use it when the site already exists in AEM
 and you only need the Content Fragment setup.
 

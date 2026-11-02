@@ -33,7 +33,7 @@ const cache = join(target, 'cache');
 
 const GROUP = 'luxtravelcf';
 const NAME = FRAGMENTS_ONLY ? 'luxtravelcf-content-fragments' : 'luxtravelcf-content';
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 const SITE_ROOT = '/content/luxtravelcf';
 // site pages: JCR path -> source XML in tools/content-package/pages/
 const PAGES = ['index', 'nav', 'footer', 'destinations/amalfi-coast', 'destinations/footer'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
