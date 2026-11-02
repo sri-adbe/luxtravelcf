@@ -1,0 +1,16 @@
+{
+  "variantName": "content-fragment-list",
+  "baseBlock": "content-fragment-list",
+  "canonicalModel": "container",
+  "visualCharacteristics": "Grid of Content Fragment items. curators: 3-up portrait cards with region eyebrow, name, bio and Meet link. destinations: 2x2 landscape image cards with country, name and tagline. services: 4-up bordered numbered cards with arrow link. testimonials: 3-up bordered quotes, featured quote on a beige fill.",
+  "contentPattern": "container of Content Fragment references",
+  "options": [
+    { "class": "curators", "label": "Curators" },
+    { "class": "destinations", "label": "Destinations" },
+    { "class": "services", "label": "Services" },
+    { "class": "testimonials", "label": "Testimonials" }
+  ],
+  "memberVariantIds": [],
+  "usage": "Lists of structured entities authored as AEM Content Fragments (Curator, Destination, Service, Testimonial models). Each item references one fragment; the block loads it through a GraphQL persisted query.",
+  "reuseGuidance": "Use whenever the list items are Content Fragments. Set the Fragment Type option to match the referenced model. Section intro (eyebrow, heading, paragraph) stays default content before the block."
+}

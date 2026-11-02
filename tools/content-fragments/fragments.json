@@ -1,0 +1,192 @@
+{
+  "damRoot": "/content/dam/luxtravelcf",
+  "assets": [
+    { "path": "/content/dam/luxtravelcf/images/curators/jim-moreau.png", "source": "https://speak-salsa-30519598.figma.site/assets/8eedaaf45a23e833b61852b4cad3c2c4acba801a-DLuBLbD-.png", "alt": "Travel curator Jim Moreau" },
+    { "path": "/content/dam/luxtravelcf/images/curators/laura-harrington.png", "source": "https://speak-salsa-30519598.figma.site/assets/fba17a504850fed8b77e2369196fb1546533c82d-DsmjyDIf.png", "alt": "Travel curator Laura Harrington" },
+    { "path": "/content/dam/luxtravelcf/images/curators/aiko-tanaka.png", "source": "https://speak-salsa-30519598.figma.site/assets/2b4f7201143c94235dc107938cd7279507078a1d-Dg1LlpA9.png", "alt": "Travel curator Aiko Tanaka" },
+    { "path": "/content/dam/luxtravelcf/images/destinations/amalfi-coast.png", "source": "https://speak-salsa-30519598.figma.site/assets/bffe87703989996ca999685e60e771938fcf2d0b-2-J8J51k.png", "alt": "Amalfi Coast scenic view" },
+    { "path": "/content/dam/luxtravelcf/images/destinations/kyoto.png", "source": "https://speak-salsa-30519598.figma.site/assets/f711a09c5ab46e6f04f6bd0c11cb8f18025f448e-BmWLd2zB.png", "alt": "Kyoto scenic view" },
+    { "path": "/content/dam/luxtravelcf/images/destinations/patagonia.png", "source": "https://speak-salsa-30519598.figma.site/assets/aabdc24fe4f1e7c76adf05e6fdd34803d4aefdb6-CuQgCvct.png", "alt": "Patagonia scenic view" },
+    { "path": "/content/dam/luxtravelcf/images/destinations/santorini.png", "source": "https://speak-salsa-30519598.figma.site/assets/e467b824fa6692b8382a8470b454833de8dace7c-B5esQ5TZ.png", "alt": "Santorini scenic view" }
+  ],
+  "fragments": [
+    {
+      "model": "curator",
+      "parentPath": "/luxtravelcf/fragments/curators",
+      "name": "jim-moreau",
+      "title": "Jim Moreau",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Jim Moreau"] },
+        { "name": "region", "type": "text", "values": ["Paris · Europe"] },
+        { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["A former art advisor with an instinct for quiet luxury."] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/jim-moreau.png"] },
+        { "name": "ctaLabel", "type": "text", "values": ["Meet Jim →"] },
+        { "name": "ctaLink", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "curator",
+      "parentPath": "/luxtravelcf/fragments/curators",
+      "name": "laura-harrington",
+      "title": "Laura Harrington",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Laura Harrington"] },
+        { "name": "region", "type": "text", "values": ["London · Africa"] },
+        { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["A lifelong traveler who knows the wild in every season."] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/laura-harrington.png"] },
+        { "name": "ctaLabel", "type": "text", "values": ["Meet Laura →"] },
+        { "name": "ctaLink", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "curator",
+      "parentPath": "/luxtravelcf/fragments/curators",
+      "name": "aiko-tanaka",
+      "title": "Aiko Tanaka",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Aiko Tanaka"] },
+        { "name": "region", "type": "text", "values": ["Tokyo · Asia"] },
+        { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["Cultural fluency and uncommon access across Japan."] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/aiko-tanaka.png"] },
+        { "name": "ctaLabel", "type": "text", "values": ["Meet Aiko →"] },
+        { "name": "ctaLink", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "destination",
+      "parentPath": "/luxtravelcf/fragments/destinations",
+      "name": "amalfi-coast",
+      "title": "Amalfi Coast",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Amalfi Coast"] },
+        { "name": "country", "type": "text", "values": ["Italia"] },
+        { "name": "tagline", "type": "text", "values": ["Private villas & cliffside dining"] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/destinations/amalfi-coast.png"] },
+        { "name": "link", "type": "text", "values": ["/destinations/amalfi-coast"] }
+      ]
+    },
+    {
+      "model": "destination",
+      "parentPath": "/luxtravelcf/fragments/destinations",
+      "name": "kyoto",
+      "title": "Kyoto",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Kyoto"] },
+        { "name": "country", "type": "text", "values": ["Japan"] },
+        { "name": "tagline", "type": "text", "values": ["Temple keys & seasonal rituals"] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/destinations/kyoto.png"] },
+        { "name": "link", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "destination",
+      "parentPath": "/luxtravelcf/fragments/destinations",
+      "name": "patagonia",
+      "title": "Patagonia",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Patagonia"] },
+        { "name": "country", "type": "text", "values": ["Argentina"] },
+        { "name": "tagline", "type": "text", "values": ["Wilderness expeditions & glacial fjords"] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/destinations/patagonia.png"] },
+        { "name": "link", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "destination",
+      "parentPath": "/luxtravelcf/fragments/destinations",
+      "name": "santorini",
+      "title": "Santorini",
+      "fields": [
+        { "name": "name", "type": "text", "values": ["Santorini"] },
+        { "name": "country", "type": "text", "values": ["Greece"] },
+        { "name": "tagline", "type": "text", "values": ["Island escapes & private catamarans"] },
+        { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/destinations/santorini.png"] },
+        { "name": "link", "type": "text", "values": [] }
+      ]
+    },
+    {
+      "model": "service",
+      "parentPath": "/luxtravelcf/fragments/services",
+      "name": "private-travel",
+      "title": "Private Travel",
+      "fields": [
+        { "name": "number", "type": "text", "values": ["01"] },
+        { "name": "title", "type": "text", "values": ["Private Travel"] },
+        { "name": "description", "type": "long-text", "mimeType": "text/plain", "values": ["Journeys designed around the way you move through the world."] },
+        { "name": "link", "type": "text", "values": ["#contact"] }
+      ]
+    },
+    {
+      "model": "service",
+      "parentPath": "/luxtravelcf/fragments/services",
+      "name": "rare-access",
+      "title": "Rare Access",
+      "fields": [
+        { "name": "number", "type": "text", "values": ["02"] },
+        { "name": "title", "type": "text", "values": ["Rare Access"] },
+        { "name": "description", "type": "long-text", "mimeType": "text/plain", "values": ["Introductions, private viewings and doors that do not open twice."] },
+        { "name": "link", "type": "text", "values": ["#contact"] }
+      ]
+    },
+    {
+      "model": "service",
+      "parentPath": "/luxtravelcf/fragments/services",
+      "name": "bespoke-stays",
+      "title": "Bespoke Stays",
+      "fields": [
+        { "name": "number", "type": "text", "values": ["03"] },
+        { "name": "title", "type": "text", "values": ["Bespoke Stays"] },
+        { "name": "description", "type": "long-text", "mimeType": "text/plain", "values": ["From considered hideaways to the world's most singular hotels."] },
+        { "name": "link", "type": "text", "values": ["#contact"] }
+      ]
+    },
+    {
+      "model": "service",
+      "parentPath": "/luxtravelcf/fragments/services",
+      "name": "global-support",
+      "title": "Global Support",
+      "fields": [
+        { "name": "number", "type": "text", "values": ["04"] },
+        { "name": "title", "type": "text", "values": ["Global Support"] },
+        { "name": "description", "type": "long-text", "mimeType": "text/plain", "values": ["A calm, capable presence from first thought to final return."] },
+        { "name": "link", "type": "text", "values": ["#contact"] }
+      ]
+    },
+    {
+      "model": "testimonial",
+      "parentPath": "/luxtravelcf/fragments/testimonials",
+      "name": "m-laurent",
+      "title": "M. Laurent, Paris",
+      "fields": [
+        { "name": "quote", "type": "long-text", "mimeType": "text/plain", "values": ["A completely seamless experience in a country I thought I already knew."] },
+        { "name": "author", "type": "text", "values": ["M. Laurent"] },
+        { "name": "location", "type": "text", "values": ["Paris"] },
+        { "name": "featured", "type": "boolean", "values": [false] }
+      ]
+    },
+    {
+      "model": "testimonial",
+      "parentPath": "/luxtravelcf/fragments/testimonials",
+      "name": "j-a-sullivan",
+      "title": "J. & A. Sullivan, London",
+      "fields": [
+        { "name": "quote", "type": "long-text", "mimeType": "text/plain", "values": ["Every detail considered, right down to the moments we never thought to ask for."] },
+        { "name": "author", "type": "text", "values": ["J. & A. Sullivan"] },
+        { "name": "location", "type": "text", "values": ["London"] },
+        { "name": "featured", "type": "boolean", "values": [true] }
+      ]
+    },
+    {
+      "model": "testimonial",
+      "parentPath": "/luxtravelcf/fragments/testimonials",
+      "name": "c-hargrave",
+      "title": "C. Hargrave, New York",
+      "fields": [
+        { "name": "quote", "type": "long-text", "mimeType": "text/plain", "values": ["The feeling of time slowing down, in the most beautiful way."] },
+        { "name": "author", "type": "text", "values": ["C. Hargrave"] },
+        { "name": "location", "type": "text", "values": ["New York"] },
+        { "name": "featured", "type": "boolean", "values": [false] }
+      ]
+    }
+  ]
+}

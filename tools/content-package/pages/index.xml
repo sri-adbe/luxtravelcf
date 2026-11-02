@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0" jcr:primaryType="cq:Page">
+  <jcr:content cq:template="/libs/core/franklin/templates/page" sling:resourceType="core/franklin/components/page/v1/page" jcr:primaryType="cq:PageContent" jcr:title="Lux Traveler | Bespoke Travel Curation" jcr:description="Architects of the extraordinary. Bespoke travel curation for the global elite." modelFields="[jcr:title,jcr:description,keywords]">
+    <root jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/root/v1/root">
+      <section sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" model="section" modelFields="[name,style]">
+        <block sling:resourceType="core/franklin/components/block/v1/block" jcr:primaryType="nt:unstructured" image="/content/dam/luxtravelcf/images/home/hero.png" model="hero-fullbleed" modelFields="[image,imageAlt,text]" name="Hero Fullbleed" text="&lt;h1&gt;Where Every Journey Is Extraordinary.&lt;/h1&gt;&lt;p&gt;And every sunset leaves you wanting one more.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;a href&#x3D;&quot;#contact&quot;&gt;Talk to a Travel Advisor&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;"></block>
+      </section>
+      <section_1 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" style="[beige]" model="section" modelFields="[name,style]">
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;Those who know&lt;/p&gt;"/>
+        <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="The Architects of Your Journey" titleType="h2"/>
+        <text_1 sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;Our curators turn a lifetime of knowledge into a journey that could only be yours.&lt;/p&gt;"/>
+        <block sling:resourceType="core/franklin/components/block/v1/block" jcr:primaryType="nt:unstructured" classes="curators" filter="content-fragment-list" model="content-fragment-list" modelFields="[classes]" name="Content Fragment List">
+          <item_0 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/curators/jim-moreau"></item_0>
+          <item_1 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/curators/laura-harrington"></item_1>
+          <item_2 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/curators/aiko-tanaka"></item_2>
+        </block>
+      </section_1>
+      <section_2 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" style="[beige,tagline]" model="section" modelFields="[name,style]">
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;&lt;em&gt;Journeys, without compromise&lt;/em&gt;&lt;/p&gt;"/>
+      </section_2>
+      <section_3 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" model="section" modelFields="[name,style]">
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;Handpicked destinations&lt;/p&gt;"/>
+        <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="The Canvas of Your Exploration" titleType="h2"/>
+        <text_1 sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;We begin with a place. Then we look past the obvious to find the moments that will stay with you.&lt;/p&gt;"/>
+        <block sling:resourceType="core/franklin/components/block/v1/block" jcr:primaryType="nt:unstructured" classes="destinations" filter="content-fragment-list" model="content-fragment-list" modelFields="[classes]" name="Content Fragment List">
+          <item_0 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/destinations/amalfi-coast"></item_0>
+          <item_1 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/destinations/kyoto"></item_1>
+          <item_2 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/destinations/patagonia"></item_2>
+          <item_3 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/destinations/santorini"></item_3>
+        </block>
+      </section_3>
+      <section_4 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" style="[beige,centered]" model="section" modelFields="[name,style]">
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;What we offer&lt;/p&gt;"/>
+        <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="An Orbit of Impeccable Standards" titleType="h2"/>
+        <block sling:resourceType="core/franklin/components/block/v1/block" jcr:primaryType="nt:unstructured" classes="services" filter="content-fragment-list" model="content-fragment-list" modelFields="[classes]" name="Content Fragment List">
+          <item_0 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/services/private-travel"></item_0>
+          <item_1 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/services/rare-access"></item_1>
+          <item_2 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/services/bespoke-stays"></item_2>
+          <item_3 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/services/global-support"></item_3>
+        </block>
+      </section_4>
+      <section_5 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" model="section" modelFields="[name,style]">
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;In their words&lt;/p&gt;"/>
+        <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="Echoes of the Extraordinary" titleType="h2"/>
+        <text_1 sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;The measure of a journey is not in the places you visit, but in how you are changed by them.&lt;/p&gt;"/>
+        <block sling:resourceType="core/franklin/components/block/v1/block" jcr:primaryType="nt:unstructured" classes="testimonials" filter="content-fragment-list" model="content-fragment-list" modelFields="[classes]" name="Content Fragment List">
+          <item_0 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/testimonials/m-laurent"></item_0>
+          <item_1 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/testimonials/j-a-sullivan"></item_1>
+          <item_2 jcr:primaryType="nt:unstructured" sling:resourceType="core/franklin/components/block/v1/block/item" name="Content Fragment" model="content-fragment-list-item" modelFields="[fragment,variation]" fragment="/content/dam/luxtravelcf/fragments/testimonials/c-hargrave"></item_2>
+        </block>
+      </section_5>
+      <section_6 sling:resourceType="core/franklin/components/section/v1/section" jcr:primaryType="nt:unstructured" style="[closing,image-background,centered]" model="section" modelFields="[name,style]">
+        <image sling:resourceType="core/franklin/components/image/v1/image" jcr:primaryType="nt:unstructured" image="/content/dam/luxtravelcf/images/home/closing.png" imageAlt=""/>
+        <text sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;Begin your legacy&lt;/p&gt;"/>
+        <title sling:resourceType="core/franklin/components/title/v1/title" jcr:primaryType="nt:unstructured" title="Let Us Design Your Next Journey" titleType="h2"/>
+        <button sling:resourceType="core/franklin/components/button/v1/button" jcr:primaryType="nt:unstructured" link="mailto:curator@voyageconcierge.com" linkText="Speak with a travel curator" linkType="primary"/>
+        <text_1 sling:resourceType="core/franklin/components/text/v1/text" jcr:primaryType="nt:unstructured" text="&lt;p&gt;No commitment. No itinerary fees. Just a conversation about where the world can take you.&lt;/p&gt;"/>
+      </section_6>
+    </root>
+  </jcr:content>
+</jcr:root>
