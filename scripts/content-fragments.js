@@ -2,8 +2,9 @@
 
 /**
  * AEM Content Fragment delivery for Lux Traveler.
- * Fragments are read through GraphQL persisted queries
+ * Published site: GraphQL persisted queries on AEM publish
  * (see tools/content-fragments/persisted-queries.json).
+ * Universal Editor (AEM author): the fragment data is read directly from the author repository.
  */
 const AEM_PUBLISH = 'https://publish-p111858-e1309055.adobeaemcloud.com';
 const GRAPHQL_ENDPOINT = 'luxtravelcf';
@@ -67,18 +68,60 @@ async function getLocalFragment(path) {
 }
 
 /**
- * Loads a Content Fragment through a persisted query.
+ * Reads a Content Fragment variation straight from the author repository (Universal Editor).
+ * Editors are signed in to author, so no GraphQL endpoint or persisted query is needed, and
+ * unpublished edits show immediately. The result has the same shape as the persisted queries.
+ * @param {string} path Content Fragment path
+ * @param {string} [variation] Content Fragment variation, defaults to master
+ * @returns {Promise<object>}
+ */
+async function fetchAuthorFragment(path, variation) {
+  const url = `${window.location.origin}${path}/jcr:content/data/${variation || 'master'}.json`;
+  const resp = await fetch(url, { credentials: 'include' });
+  if (!resp.ok) throw new Error(resp.status === 404 ? 'no Content Fragment at this path' : `HTTP ${resp.status}`);
+  const data = await resp.json();
+  const item = { _path: path };
+  Object.entries(data).forEach(([key, value]) => {
+    if (key.includes(':') || key.includes('@')) return; // JCR and field-metadata properties
+    const contentType = data[`${key}@ContentType`];
+    if (contentType) {
+      // multi-line text: plain text as in the persisted queries (strip markup for rich text)
+      const plaintext = contentType === 'text/html'
+        ? new DOMParser().parseFromString(value, 'text/html').body.textContent : value;
+      item[key] = { plaintext, html: value };
+    } else if (typeof value === 'string' && value.startsWith('/content/dam/')) {
+      item[key] = { _path: value, _authorUrl: `${window.location.origin}${value}` };
+    } else {
+      item[key] = value;
+    }
+  });
+  return item;
+}
+
+/**
+ * Loads a Content Fragment: from the author repository in Universal Editor,
+ * otherwise through a persisted query on publish.
  * @param {string} query Persisted query name, e.g. curatorByPath
  * @param {string} path Content Fragment path
  * @param {string} [variation] Content Fragment variation, defaults to master
  * @returns {Promise<object|null>} The fragment item, or null when it could not be loaded
  */
 export async function fetchContentFragment(query, path, variation) {
+  if (isAuthor()) {
+    try {
+      return await fetchAuthorFragment(path, variation);
+    } catch (e) {
+      fragmentErrors.set(path, e.message);
+      // eslint-disable-next-line no-console
+      console.warn(`Content Fragment ${path} could not be loaded from author: ${e.message}`);
+      return null;
+    }
+  }
   const params = `;path=${encodeURIComponent(path)};variation=${encodeURIComponent(variation || 'master')}`;
   const url = `${getAemHost()}/graphql/execute.json/${GRAPHQL_ENDPOINT}/${query}${params}`;
   let error;
   try {
-    const resp = await fetch(url, isAuthor() ? { credentials: 'include' } : {});
+    const resp = await fetch(url);
     const json = await resp.json().catch(() => ({}));
     const item = json.data?.[query]?.item;
     if (resp.ok && item) return item;
