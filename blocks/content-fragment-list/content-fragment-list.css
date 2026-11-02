@@ -391,3 +391,13 @@
     left: -120px;
   }
 }
+
+/* Universal Editor only: explains why an item is empty */
+.content-fragment-list > ul > li.content-fragment-list-missing.content-fragment-list-notice {
+  display: block;
+  border: 1px dashed var(--accent-color);
+  padding: 16px;
+  color: var(--accent-hover-color);
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}

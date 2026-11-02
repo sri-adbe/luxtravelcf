@@ -78,6 +78,20 @@ is re-imported.
 5. **CORS**: allow the Edge Delivery origins (`https://*--luxtravelcf--sri-adbe.aem.page`,
    `https://*--luxtravelcf--sri-adbe.aem.live` and the production domain) to call
    `/graphql/execute.json/*` on publish (`com.adobe.granite.cors.impl.CORSPolicyImpl` OSGi config).
+   A ready-made policy is in `aem-config/`: copy it to your AEM Cloud Service code repository at
+   `ui.config/src/main/content/jcr_root/apps/<app>/osgiconfig/config.publish/` and deploy it with
+   Cloud Manager. Add the production domain to `alloworigin` when it is known. The Dispatcher must
+   also let `/graphql/execute.json/*` through and pass the `Origin` header (the default AEM as a
+   Cloud Service Dispatcher configuration does).
+
+## Troubleshooting
+
+In Universal Editor, an item that can't be loaded shows a notice with the fragment path and the
+error AEM returned (visitors see nothing). To check a query directly, open it in a browser where
+you're logged in to author, e.g.
+`https://<author-host>/graphql/execute.json/luxtravelcf/curatorByPath;path=%2Fcontent%2Fdam%2Fluxtravelcf%2Ffragments%2Fcurators%2Fjim-moreau`.
+- "Could not find Persisted Query": the queries aren't installed (author) or published (publish).
+- "fragment not found" / `item: null`: the fragment path doesn't exist or uses another model.
 
 ## Local preview
 

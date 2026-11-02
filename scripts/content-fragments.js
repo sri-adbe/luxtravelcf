@@ -5,14 +5,17 @@
  * Fragments are read through GraphQL persisted queries
  * (see tools/content-fragments/persisted-queries.json).
  */
-const AEM_AUTHOR = 'https://author-p111858-e1309055.adobeaemcloud.com';
 const AEM_PUBLISH = 'https://publish-p111858-e1309055.adobeaemcloud.com';
 const GRAPHQL_ENDPOINT = 'luxtravelcf';
 
 // local development only: mirror of the fragments created by tools/content-fragments/setup-aem.mjs
 const LOCAL_FRAGMENTS = '/tools/content-fragments/fragments.json';
 
-const isAuthor = () => window.location.hostname.includes('adobeaemcloud.com');
+/**
+ * True on AEM author (Universal Editor), where fragments load from the author itself.
+ * @returns {boolean}
+ */
+export const isAuthor = () => window.location.hostname.includes('adobeaemcloud.com');
 const isLocal = () => window.location.hostname === 'localhost';
 
 /**
@@ -20,10 +23,14 @@ const isLocal = () => window.location.hostname === 'localhost';
  * @returns {string}
  */
 export function getAemHost() {
-  return isAuthor() ? AEM_AUTHOR : AEM_PUBLISH;
+  // on author use the page's own host, so the editor works on any author environment
+  return isAuthor() ? window.location.origin : AEM_PUBLISH;
 }
 
 let localFragments;
+
+/** Why a fragment could not be loaded, by fragment path (shown to authors in the editor). */
+export const fragmentErrors = new Map();
 
 /**
  * Converts a fragment from the local mirror into the shape returned by the persisted queries.
@@ -69,17 +76,24 @@ async function getLocalFragment(path) {
 export async function fetchContentFragment(query, path, variation) {
   const params = `;path=${encodeURIComponent(path)};variation=${encodeURIComponent(variation || 'master')}`;
   const url = `${getAemHost()}/graphql/execute.json/${GRAPHQL_ENDPOINT}/${query}${params}`;
+  let error;
   try {
     const resp = await fetch(url, isAuthor() ? { credentials: 'include' } : {});
-    if (resp.ok) {
-      const { data } = await resp.json();
-      const item = data?.[query]?.item;
-      if (item) return item;
-    }
+    const json = await resp.json().catch(() => ({}));
+    const item = json.data?.[query]?.item;
+    if (resp.ok && item) return item;
+    error = json.errors?.[0]?.message || (resp.ok ? 'fragment not found' : `HTTP ${resp.status}`);
   } catch (e) {
-    // fall through to the local mirror
+    error = `request failed (${e.message})`;
   }
-  return isLocal() ? getLocalFragment(path) : null;
+  if (isLocal()) {
+    const local = await getLocalFragment(path);
+    if (local) return local;
+  }
+  fragmentErrors.set(path, `${query}: ${error}`);
+  // eslint-disable-next-line no-console
+  console.warn(`Content Fragment ${path} could not be loaded via ${url}: ${error}`);
+  return null;
 }
 
 /**

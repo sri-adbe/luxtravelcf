@@ -1,5 +1,7 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
-import { fetchContentFragment, getImageUrl } from '../../scripts/content-fragments.js';
+import {
+  fetchContentFragment, fragmentErrors, getImageUrl, isAuthor,
+} from '../../scripts/content-fragments.js';
 
 /**
  * Creates an element with optional class, text and Universal Editor field instrumentation.
@@ -204,10 +206,16 @@ export default async function decorate(block) {
     ul.append(li);
 
     const { path, variation } = readItem(row);
-    if (!path) return;
-    const cf = await fetchContentFragment(query, path, variation);
+    const cf = path ? await fetchContentFragment(query, path, variation) : null;
     if (!cf) {
       li.classList.add('content-fragment-list-missing');
+      // in the editor, tell authors why the item is empty; visitors see nothing
+      if (isAuthor()) {
+        li.classList.add('content-fragment-list-notice');
+        li.textContent = path
+          ? `${label} fragment ${path} could not be loaded: ${fragmentErrors.get(path) || 'unknown error'}`
+          : `Select a ${label} Content Fragment`;
+      }
       return;
     }
     const content = render(cf);

@@ -1,0 +1,27 @@
+{
+  "alloworigin": [
+    "https://main--luxtravelcf--sri-adbe.aem.page",
+    "https://main--luxtravelcf--sri-adbe.aem.live"
+  ],
+  "alloworiginregexp": [
+    "https://.*--luxtravelcf--sri-adbe\\.aem\\.(page|live)"
+  ],
+  "allowedpaths": [
+    "/graphql/execute.json/luxtravelcf/.*"
+  ],
+  "supportedheaders": [
+    "Origin",
+    "Accept",
+    "X-Requested-With",
+    "Content-Type",
+    "Access-Control-Request-Method",
+    "Access-Control-Request-Headers"
+  ],
+  "supportedmethods": [
+    "GET",
+    "HEAD",
+    "OPTIONS"
+  ],
+  "maxage:Integer": 1800,
+  "supportscredentials": false
+}
