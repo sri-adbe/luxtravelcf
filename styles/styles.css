@@ -264,6 +264,10 @@ main > .section.hero-fullbleed-container > div {
 }
 
 /* default content */
+main > .section > .default-content-wrapper {
+  display: flow-root;
+}
+
 main .default-content-wrapper > p {
   color: var(--muted-text-color);
   font-size: var(--body-font-size-s);
@@ -318,9 +322,9 @@ main .default-content-wrapper > p:has(+ h1, + h2)::before {
   }
 }
 
-main > .section > .default-content-wrapper:has(> h2 + p) > h2 + p {
+main > .section > .default-content-wrapper:has(> h2 + p) > h2 + p:where(:not(.button-wrapper)) {
   max-width: 300px;
-  margin: 22px 0 0;
+  margin: 22px 0 4px;
 }
 
 /* section metadata */
@@ -339,6 +343,12 @@ main .section.centered .default-content-wrapper {
 
 main > .section.centered > div + div {
   margin-top: 53px;
+}
+
+@media (width >= 600px) {
+  main > .section.centered.content-fragment-list-container {
+    padding: 111px 0 112px;
+  }
 }
 
 /* tagline strip: short italic-free serif label between two rules */
