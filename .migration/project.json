@@ -5,7 +5,11 @@
       "previewOrg": "sri-adbe",
       "previewSite": "luxtravelcf",
       "contentHostUrl": "author-p111858-e1309055.adobeaemcloud.com",
-      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
+      "aemSitePath": "/content/luxtravelcf",
+      "aemAssetsFolderPath": "/content/dam/luxtravelcf",
+      "aemSiteName": "luxtravelcf",
+      "aemSiteTitle": "luxtravelcf"
     }
   }
 }
