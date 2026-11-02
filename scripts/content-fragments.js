@@ -68,6 +68,21 @@ async function getLocalFragment(path) {
 }
 
 /**
+ * Maps a public page link from a fragment (e.g. /destinations/amalfi-coast) to its page on
+ * author (/content/<site>/destinations/amalfi-coast.html), using the site root of the page
+ * being edited. Anchors, external and already-mapped links are returned as they are.
+ * @param {string} link
+ * @returns {string}
+ */
+function toAuthorLink(link) {
+  const root = window.location.pathname.match(/^\/content\/[^/]+/)?.[0];
+  const parts = /^(\/(?!\/)[^?#]*)(.*)$/.exec(link || '');
+  if (!root || !parts || link.startsWith('/content/')) return link;
+  const path = parts[1] === '/' ? '/index' : parts[1].replace(/\/$/, '');
+  return `${root}${path}.html${parts[2]}`;
+}
+
+/**
  * Reads a Content Fragment variation straight from the author repository (Universal Editor).
  * Editors are signed in to author, so no GraphQL endpoint or persisted query is needed, and
  * unpublished edits show immediately. The result has the same shape as the persisted queries.
@@ -91,6 +106,8 @@ async function fetchAuthorFragment(path, variation) {
       item[key] = { plaintext, html: value };
     } else if (typeof value === 'string' && value.startsWith('/content/dam/')) {
       item[key] = { _path: value, _authorUrl: `${window.location.origin}${value}` };
+    } else if (/link$/i.test(key) && typeof value === 'string') {
+      item[key] = toAuthorLink(value);
     } else {
       item[key] = value;
     }
