@@ -7,3 +7,4 @@ package-lock.json
 test/*
 _*
 tools/content-package/target/
+tools/content-package/dist/

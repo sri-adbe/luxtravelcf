@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable no-console, no-restricted-syntax, no-await-in-loop */
+/* eslint-disable no-console, no-restricted-syntax, no-await-in-loop, no-use-before-define */
 /*
  * Builds the Lux Traveler AEM content package (FileVault zip) for Package Manager:
  *   - /conf/luxtravelcf: Content Fragment Models and GraphQL persisted queries
@@ -7,8 +7,10 @@
  *   - /content/dam/luxtravelcf: cq:conf binding, images, Content Fragments
  *   - /content/luxtravelcf/index: the migrated home page (Universal Editor / xwalk)
  *
- * Usage: node tools/content-package/build.mjs
+ * Usage: node tools/content-package/build.mjs [--fragments-only]
  * Output: tools/content-package/target/luxtravelcf-content-<version>.zip
+ *   --fragments-only: tools/content-package/target/luxtravelcf-content-fragments-<version>.zip
+ *   with the conf, endpoint, fragment images and fragments only (no site root, no page).
  *
  * Sources: tools/content-fragments/{models,fragments,persisted-queries}.json,
  * tools/content-package/pages/index.xml and tools/content-package/page-assets.json.
@@ -24,12 +26,13 @@ import { crc32, deflateRawSync } from 'node:zlib';
 const here = dirname(fileURLToPath(import.meta.url));
 const cfDir = join(here, '../content-fragments');
 const target = join(here, 'target');
-const root = join(target, 'package');
+const FRAGMENTS_ONLY = process.argv.includes('--fragments-only');
+const root = join(target, FRAGMENTS_ONLY ? 'package-fragments' : 'package');
 const jcrRoot = join(root, 'jcr_root');
 const cache = join(target, 'cache');
 
 const GROUP = 'luxtravelcf';
-const NAME = 'luxtravelcf-content';
+const NAME = FRAGMENTS_ONLY ? 'luxtravelcf-content-fragments' : 'luxtravelcf-content';
 const VERSION = '1.0.0';
 const SITE_ROOT = '/content/luxtravelcf';
 const PAGE = `${SITE_ROOT}/index`;
@@ -41,7 +44,7 @@ const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 const models = readJson(join(cfDir, 'models.json'));
 const content = readJson(join(cfDir, 'fragments.json'));
 const queries = readJson(join(cfDir, 'persisted-queries.json'));
-const pageAssets = readJson(join(here, 'page-assets.json'));
+const pageAssets = FRAGMENTS_ONLY ? { assets: [] } : readJson(join(here, 'page-assets.json'));
 
 const NS = {
   jcr: 'http://www.jcp.org/jcr/1.0',
@@ -400,20 +403,32 @@ async function main() {
   content.fragments.forEach((f) => write(`/content/dam${f.parentPath}/${f.name}`, fragmentTree(f)));
 
   // Sites: site root (only created if missing) and the home page
+  if (!FRAGMENTS_ONLY) writeSite();
+
+  writeMetaInf();
+  const out = join(target, `${NAME}-${VERSION}.zip`);
+  const count = zip(root, out);
+  console.log(`Wrote ${relative(process.cwd(), out)} (${count} files, ${(statSync(out).size / 1048576).toFixed(1)} MB)`);
+}
+
+function writeSite() {
   write(SITE_ROOT, {
     props: { 'jcr:primaryType': 'cq:Page' },
     children: [['jcr:content', {
       props: {
         'jcr:primaryType': 'cq:PageContent',
         'jcr:title': 'Lux Traveler',
+        // the Edge Delivery Services cloud configuration is resolved through this binding
+        'cq:conf': CONF,
         'cq:template': '/libs/core/franklin/templates/page',
         'sling:resourceType': 'core/franklin/components/page/v1/page',
       },
     }]],
   });
   write(PAGE, readFileSync(join(here, 'pages/index.xml'), 'utf8'));
+}
 
-  // META-INF
+function writeMetaInf() {
   const vault = join(root, 'META-INF', 'vault');
   mkdirSync(vault, { recursive: true });
   writeFileSync(join(vault, 'filter.xml'), `<?xml version="1.0" encoding="UTF-8"?>
@@ -424,8 +439,7 @@ async function main() {
     <filter root="${DAM}/jcr:content" mode="update"/>
     <filter root="${DAM}/images" mode="update"/>
     <filter root="${DAM}/fragments" mode="update"/>
-    <filter root="${PAGE}" mode="replace"/>
-</workspaceFilter>
+${FRAGMENTS_ONLY ? '' : `    <filter root="${PAGE}" mode="replace"/>\n`}</workspaceFilter>
 `);
   writeFileSync(join(vault, 'properties.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
@@ -434,7 +448,7 @@ async function main() {
     <entry key="name">${NAME}</entry>
     <entry key="group">${GROUP}</entry>
     <entry key="version">${VERSION}</entry>
-    <entry key="description">Lux Traveler: Content Fragment Models, persisted queries, GraphQL endpoint, DAM images, Content Fragments and the home page.</entry>
+    <entry key="description">Lux Traveler: Content Fragment Models, persisted queries, GraphQL endpoint, DAM images${FRAGMENTS_ONLY ? ' and Content Fragments' : ', Content Fragments and the home page'}.</entry>
     <entry key="createdBy">luxtravelcf migration</entry>
     <entry key="packageType">content</entry>
     <entry key="requiresRoot">false</entry>
@@ -469,10 +483,6 @@ async function main() {
     </aggregates>
 </vaultfs>
 `);
-
-  const out = join(target, `${NAME}-${VERSION}.zip`);
-  const count = zip(root, out);
-  console.log(`Wrote ${relative(process.cwd(), out)} (${count} files, ${(statSync(out).size / 1048576).toFixed(1)} MB)`);
 }
 
 main().catch((error) => {

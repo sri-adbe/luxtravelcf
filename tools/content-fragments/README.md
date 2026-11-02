@@ -41,6 +41,11 @@ images in `/content/dam/luxtravelcf/images`.
 
 Parent nodes (`/conf/luxtravelcf`, `/content/luxtravelcf`, …) are only created when missing.
 
+`node tools/content-package/build.mjs --fragments-only` builds
+`tools/content-package/target/luxtravelcf-content-fragments-1.0.0.zip` instead: the same package
+without the site root, the home page and its two images. Use it when the site already exists in AEM
+and you only need the Content Fragment setup.
+
 1. Install the zip in **Package Manager** (`/crx/packmgr`) on author. On AEM as a Cloud Service
    production, deploy it through Cloud Manager instead if Package Manager installs are restricted.
 2. In Assets, select `/content/dam/luxtravelcf/images` and run **Reprocess Assets**, so the images
