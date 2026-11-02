@@ -18,7 +18,7 @@
           "allowedContentTypes": ["image"]
         },
         { "type": "text", "name": "ctaLabel", "label": "Button Label", "description": "e.g. Meet Jim →", "maxLength": 255 },
-        { "type": "text", "name": "ctaLink", "label": "Button Link", "description": "Page path or URL. Leave empty for no link.", "maxLength": 255 }
+        { "type": "text", "name": "ctaLink", "label": "Button Link", "description": "Page path or URL; #enquiry opens the contact dialog. Leave empty for no link.", "maxLength": 255 }
       ]
     },
     {

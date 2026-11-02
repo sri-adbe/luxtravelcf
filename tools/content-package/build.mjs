@@ -5,7 +5,7 @@
  *   - /conf/luxtravelcf: Content Fragment Models and GraphQL persisted queries
  *   - /content/cq:graphql/luxtravelcf/endpoint: GraphQL endpoint
  *   - /content/dam/luxtravelcf: cq:conf binding, images, Content Fragments
- *   - /content/luxtravelcf/index: the migrated home page (Universal Editor / xwalk)
+ *   - /content/luxtravelcf/{index,nav,footer}: home page and header/footer pages (xwalk)
  *
  * Usage: node tools/content-package/build.mjs [--fragments-only]
  * Output: tools/content-package/target/luxtravelcf-content-<version>.zip
@@ -35,7 +35,8 @@ const GROUP = 'luxtravelcf';
 const NAME = FRAGMENTS_ONLY ? 'luxtravelcf-content-fragments' : 'luxtravelcf-content';
 const VERSION = '1.0.0';
 const SITE_ROOT = '/content/luxtravelcf';
-const PAGE = `${SITE_ROOT}/index`;
+// site pages: JCR path -> source XML in tools/content-package/pages/
+const PAGES = ['index', 'nav', 'footer'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
 const CONF = '/conf/luxtravelcf';
 const DAM = '/content/dam/luxtravelcf';
 const ENDPOINT = '/content/cq:graphql/luxtravelcf/endpoint';
@@ -402,7 +403,7 @@ async function main() {
   for (const asset of [...content.assets, ...pageAssets.assets]) await writeAsset(asset);
   content.fragments.forEach((f) => write(`/content/dam${f.parentPath}/${f.name}`, fragmentTree(f)));
 
-  // Sites: site root (only created if missing) and the home page
+  // Sites: site root (only created if missing), the home page and the nav/footer pages
   if (!FRAGMENTS_ONLY) writeSite();
 
   writeMetaInf();
@@ -425,7 +426,7 @@ function writeSite() {
       },
     }]],
   });
-  write(PAGE, readFileSync(join(here, 'pages/index.xml'), 'utf8'));
+  PAGES.forEach(({ path, xml }) => write(path, readFileSync(join(here, xml), 'utf8')));
 }
 
 function writeMetaInf() {
@@ -439,7 +440,7 @@ function writeMetaInf() {
     <filter root="${DAM}/jcr:content" mode="update"/>
     <filter root="${DAM}/images" mode="update"/>
     <filter root="${DAM}/fragments" mode="update"/>
-${FRAGMENTS_ONLY ? '' : `    <filter root="${PAGE}" mode="replace"/>\n`}</workspaceFilter>
+${FRAGMENTS_ONLY ? '' : PAGES.map(({ path }) => `    <filter root="${path}" mode="replace"/>\n`).join('')}</workspaceFilter>
 `);
   writeFileSync(join(vault, 'properties.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
@@ -448,7 +449,7 @@ ${FRAGMENTS_ONLY ? '' : `    <filter root="${PAGE}" mode="replace"/>\n`}</worksp
     <entry key="name">${NAME}</entry>
     <entry key="group">${GROUP}</entry>
     <entry key="version">${VERSION}</entry>
-    <entry key="description">Lux Traveler: Content Fragment Models, persisted queries, GraphQL endpoint, DAM images${FRAGMENTS_ONLY ? ' and Content Fragments' : ', Content Fragments and the home page'}.</entry>
+    <entry key="description">Lux Traveler: Content Fragment Models, persisted queries, GraphQL endpoint, DAM images${FRAGMENTS_ONLY ? ' and Content Fragments' : ', Content Fragments, the home page and the nav/footer pages'}.</entry>
     <entry key="createdBy">luxtravelcf migration</entry>
     <entry key="packageType">content</entry>
     <entry key="requiresRoot">false</entry>

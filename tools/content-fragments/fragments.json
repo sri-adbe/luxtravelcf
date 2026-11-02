@@ -21,7 +21,7 @@
         { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["A former art advisor with an instinct for quiet luxury."] },
         { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/jim-moreau.png"] },
         { "name": "ctaLabel", "type": "text", "values": ["Meet Jim →"] },
-        { "name": "ctaLink", "type": "text", "values": [] }
+        { "name": "ctaLink", "type": "text", "values": ["#enquiry"] }
       ]
     },
     {
@@ -35,7 +35,7 @@
         { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["A lifelong traveler who knows the wild in every season."] },
         { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/laura-harrington.png"] },
         { "name": "ctaLabel", "type": "text", "values": ["Meet Laura →"] },
-        { "name": "ctaLink", "type": "text", "values": [] }
+        { "name": "ctaLink", "type": "text", "values": ["#enquiry"] }
       ]
     },
     {
@@ -49,7 +49,7 @@
         { "name": "bio", "type": "long-text", "mimeType": "text/plain", "values": ["Cultural fluency and uncommon access across Japan."] },
         { "name": "image", "type": "content-reference", "values": ["/content/dam/luxtravelcf/images/curators/aiko-tanaka.png"] },
         { "name": "ctaLabel", "type": "text", "values": ["Meet Aiko →"] },
-        { "name": "ctaLink", "type": "text", "values": [] }
+        { "name": "ctaLink", "type": "text", "values": ["#enquiry"] }
       ]
     },
     {
