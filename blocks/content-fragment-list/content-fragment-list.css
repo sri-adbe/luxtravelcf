@@ -246,10 +246,12 @@
 }
 
 /* decorative divider between header and body */
+
+/* source divider is a 325x1 line image scaled to the card width, so it thickens on narrow cards */
 .content-fragment-list.experiences .content-fragment-list-card::after {
   content: '';
   order: 1;
-  height: 1px;
+  aspect-ratio: 325 / 1;
   background-color: var(--border-color);
 }
 

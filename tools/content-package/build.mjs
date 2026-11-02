@@ -36,7 +36,7 @@ const NAME = FRAGMENTS_ONLY ? 'luxtravelcf-content-fragments' : 'luxtravelcf-con
 const VERSION = '1.0.0';
 const SITE_ROOT = '/content/luxtravelcf';
 // site pages: JCR path -> source XML in tools/content-package/pages/
-const PAGES = ['index', 'nav', 'footer', 'destinations/amalfi-coast'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
+const PAGES = ['index', 'nav', 'footer', 'destinations/amalfi-coast', 'destinations/footer'].map((name) => ({ path: `${SITE_ROOT}/${name}`, xml: `pages/${name}.xml` }));
 const CONF = '/conf/luxtravelcf';
 const DAM = '/content/dam/luxtravelcf';
 const ENDPOINT = '/content/cq:graphql/luxtravelcf/endpoint';
